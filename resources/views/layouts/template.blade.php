@@ -12,7 +12,7 @@
       @include('layouts.navbar')
       <!-- partial -->
       <div class="main-panel">
-        @include('layouts.content')
+        @yield('content')
         <!-- content-wrapper ends -->
         <!-- partial:./partials/_footer.html -->
         @include('layouts.footer')

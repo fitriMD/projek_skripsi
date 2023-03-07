@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.template');
 });
+Route::get('/createUser', function () {
+    return view('users.create');
+});
+Route::get('/daftarUser', function () {
+    return view('users.index');
+});
+Route::get('/createUser', function () {
+    return view('users.create');
+});
 
 Auth::routes();
 

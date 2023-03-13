@@ -7,10 +7,8 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Striped Table</h4>
-                        <p class="card-description">
-                            Add class <code>.table-striped</code>
-                        </p>
+                        <h4 class="card-title">Data Siswa</h4>
+                        <a class="btn btn-success my-2" href="/createUser" style="width: 150px; margin-left:10px;"> Tambah User</a>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
@@ -19,13 +17,13 @@
                                             Nama
                                         </th>
                                         <th>
-                                            NIP
+                                            NIS
                                         </th>
                                         <th>
-                                            Username
+                                            Jenis Kelamin
                                         </th>
                                         <th>
-                                            Role
+                                            Kelas
                                         </th>
                                         <th>
                                             Action
@@ -33,152 +31,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($user as $user)
                                     <tr>
-                                        <td class="py-1">
-                                            <img src="../../images/faces/face1.jpg" alt="image" />
-                                        </td>
+                                        <td>{{ $user->nama }}</td>
+                                        <td>{{ $user->nip }}</td>
+                                        <td>{{ $user->username }}</td>
+                                        <td>{{ $user->roles }}</td>
                                         <td>
-                                            Herman Beck
-                                        </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                    style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            $ 77.99
-                                        </td>
-                                        <td>
-                                            May 15, 2015
+
+                                            <a href="{{ url('users/hapus/'. $user->id_user) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
+                                                class="fa fa-trash"></i> Hapus</a>
+                                            <a href="{{ url('users/update/'. $user->id_user) }}" class="btn btn-warning"><i
+                                                    class="fa fa-trash"></i> Update</a>    
+                                            {{-- <form action="{{ route('users.destroy/' . $user->id) }}" method="POST">
+                                                <form action="{{ url('fitri',$user->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
+                                                        class="fa fa-times"></i></button>
+                                            </form> --}}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="py-1">
-                                            <img src="../../images/faces/face2.jpg" alt="image" />
-                                        </td>
-                                        <td>
-                                            Messsy Adam
-                                        </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-danger" role="progressbar"
-                                                    style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            $245.30
-                                        </td>
-                                        <td>
-                                            July 1, 2015
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-1">
-                                            <img src="../../images/faces/face3.jpg" alt="image" />
-                                        </td>
-                                        <td>
-                                            John Richards
-                                        </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-warning" role="progressbar"
-                                                    style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            $138.00
-                                        </td>
-                                        <td>
-                                            Apr 12, 2015
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-1">
-                                            <img src="../../images/faces/face4.jpg" alt="image" />
-                                        </td>
-                                        <td>
-                                            Peter Meggik
-                                        </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar"
-                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            $ 77.99
-                                        </td>
-                                        <td>
-                                            May 15, 2015
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-1">
-                                            <img src="../../images/faces/face5.jpg" alt="image" />
-                                        </td>
-                                        <td>
-                                            Edward
-                                        </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-danger" role="progressbar"
-                                                    style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            $ 160.25
-                                        </td>
-                                        <td>
-                                            May 03, 2015
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-1">
-                                            <img src="../../images/faces/face6.jpg" alt="image" />
-                                        </td>
-                                        <td>
-                                            John Doe
-                                        </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 65%"
-                                                    aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            $ 123.21
-                                        </td>
-                                        <td>
-                                            April 05, 2015
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-1">
-                                            <img src="../../images/faces/face7.jpg" alt="image" />
-                                        </td>
-                                        <td>
-                                            Henry Tom
-                                        </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-warning" role="progressbar"
-                                                    style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            $ 150.00
-                                        </td>
-                                        <td>
-                                            June 16, 2015
-                                        </td>
-                                    </tr>
+                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>

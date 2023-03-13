@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +31,18 @@ Route::resource('daftarUser', UserController::class);
 Route::get('/createUser', [UserController::class, 'create']);
 Route::post('/user-update/{id}', [UserController::class, 'update']);
 Route::post('createuser', [UserController::class, 'store'])->name('users.create');
-// Route::delete('deleteuser/{id}', [UserController::class, 'destroy'])->name('users.destroy');    
 Route::get('users/hapus/{id}', [UserController::class, 'destroy']);
 Route::get('users/update/{id}', [UserController::class, 'edit']);
-
-
 /** End : User */
+
+/** Kelas */
+Route::resource('daftarKelas', KelasController::class);
+Route::get('/createKelas', [KelasController::class, 'create']);
+Route::post('/kelas-update/{id}', [KelasController::class, 'update']);
+Route::post('createkelas', [KelasController::class, 'store'])->name('kelas.create');
+Route::get('kelas/hapus/{id}', [KelasController::class, 'destroy']);
+Route::get('kelas/update/{id}', [KelasController::class, 'edit']);
+/** End : Kelas */
 
 // Auth::routes();
 

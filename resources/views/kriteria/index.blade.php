@@ -7,23 +7,20 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data Siswa</h4>
-                        <a class="btn btn-success my-2" href="/createSiswa" style="width: 150px; margin-left:10px;"> Tambah Siswa</a>
+                        <h4 class="card-title">Data User</h4>
+                        {{-- <a class="btn btn-success my-2" href="/createKriteria" style="width: 150px; margin-left:10px;"> Tambah Kriteria</a> --}}
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>
-                                            Nama
+                                            Nama Kriteria
                                         </th>
                                         <th>
-                                            Nomor Induk Siswa
+                                            Variabel
                                         </th>
                                         <th>
-                                            Jenis Kelamin
-                                        </th>
-                                        <th>
-                                            Kelas
+                                            Tipe
                                         </th>
                                         <th>
                                             Action
@@ -31,17 +28,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($siswa as $data)
+                                    @foreach ($kriteria as $k)
                                     <tr>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->nis }}</td>
-                                        <td>{{ $data->gender }}</td>
-                                        <td>{{ $data->id_kelas_siswa }}</td>
+                                        <td>{{ $k->nm_kriteria }}</td>
+                                        <td>{{ $k->variabel }}</td>
+                                        <td>{{ $k->tipe }}</td>
                                         <td>
 
-                                            <a href="{{ url('siswa/hapus/'. $data->id_siswa) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
+                                            <a href="{{ url('kriteria/hapus/'. $k->id_kriteria) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
                                                 class="fa fa-trash"></i> Hapus</a>
-                                            <a href="{{ url('siswa/update/'. $data->id_siswa) }}" class="btn btn-warning"><i
+                                            <a href="{{ url('kriteria/update/'. $k->id_kriteria) }}" class="btn btn-warning"><i
                                                     class="fa fa-trash"></i> Update</a>    
                                         </td>
                                     </tr>

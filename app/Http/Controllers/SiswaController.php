@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kelas;
+use App\Models\Siswa;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class SiswaController extends Controller
 {
@@ -13,7 +17,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        $siswa = Siswa::with('kelas')->get();
+        return view('siswa.index', compact('siswa'));
     }
 
     /**
@@ -23,7 +28,8 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        $kelas = Kelas::all();
+        return view('siswa.create', ['kelas' => $kelas]);
     }
 
     /**
@@ -34,7 +40,33 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nis' => 'required',
+            'nama' => 'required',
+            'gender' => 'required',
+            'id_kelas_siswa' => 'required',
+
+        ]);
+
+        $siswa = new Siswa();
+        $siswa->nis = $request->get('nis');
+        $siswa->nama = $request->get('nama');
+        $siswa->gender = $request->get('gender');
+        $siswa->id_kelas_siswa = $request->get('id_kelas_siswa');
+        $siswa->save();
+        
+        // $kelas = new Kelas();
+        
+        // $siswa->kelas()->save($kelas);
+        $siswa->save();
+
+        if ($siswa) {
+            Session::flash('success','Data kelas Berhasil Ditambahkan');
+            return redirect('daftarSiswa');
+        } else {
+            Session::flash('failed','Data kelas Gagal Ditambahkan');
+            return redirect()->route('kelas.create');
+        }
     }
 
     /**
@@ -56,7 +88,10 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $siswa = Siswa::find($id);
+        $kelas = Kelas::all();
+  
+        return view('siswa.update', ['siswa' => $siswa, 'kelas' => $kelas]);
     }
 
     /**
@@ -68,7 +103,15 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $siswa = Siswa::find($id);
+        $siswa->nis = $request->nis;
+        $siswa->nama = $request->nama;
+        $siswa->gender = $request->gender;
+        $siswa->id_kelas_siswa = $request->id_kelas_siswa;
+
+        $siswa->save();
+
+        return redirect('daftarSiswa');
     }
 
     /**
@@ -79,6 +122,7 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Siswa::find($id)->delete();
+        return redirect('daftarSiswa');
     }
 }

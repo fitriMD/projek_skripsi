@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class KelasController extends Controller
@@ -18,10 +17,6 @@ class KelasController extends Controller
     public function index()
     {
         $kelas = Kelas::with('waliKelas')->get();
-
-        // $kelas = Kelas::with('waliKelas')->get();
-        // $kelas = Kelas::orderBy('id_kelas','ASC')
-        // ->get();
         return view('kelas.index', compact('kelas'));
     }
 
@@ -57,10 +52,9 @@ class KelasController extends Controller
         $kelas->id_user_walikelas = $request->get('id_user_walikelas');
         $kelas->save();
         
-        $waliKelas = new User;
-        // $waliKelas->id_user = $request->get('id_user_walikelas');
+        // $waliKelas = new User;
         
-        $kelas->waliKelas()->save($waliKelas);
+        // $kelas->waliKelas()->save($waliKelas);
         $kelas->save();
 
         if ($kelas) {

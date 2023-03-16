@@ -5,7 +5,7 @@
         <span></span>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/">
           <i class="mdi mdi-view-quilt menu-icon"></i>
           <span class="menu-title">Dashboard</span>
         </a>
@@ -25,8 +25,8 @@
             <li class="nav-item"> <a class="nav-link" href="/daftarUser">Data User</a></li>
             <li class="nav-item"> <a class="nav-link" href="/daftarSiswa">Data Siswa</a></li>
             <li class="nav-item"> <a class="nav-link" href="/daftarKelas">Data Kelas</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Data Alternatif</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Data Kriteria</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/daftarAlternatif">Data Alternatif</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/daftarKriteria">Data Kriteria</a></li>
           </ul>
         </div>
       </li>

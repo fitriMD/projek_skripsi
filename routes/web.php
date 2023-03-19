@@ -6,6 +6,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\AlternatifController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,12 +18,12 @@ use App\Http\Controllers\AlternatifController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/', function () {
+    return redirect('login');
 });
 
 /** User */
@@ -71,6 +72,6 @@ Route::get('alternatif/hapus/{id}', [AlternatifController::class, 'destroy']);
 Route::get('alternatif/update/{id}', [AlternatifController::class, 'edit']);
 /** End : Alternatif */
 
-// Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();

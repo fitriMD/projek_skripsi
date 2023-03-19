@@ -6,11 +6,11 @@
         <div class="row flex-grow">
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3">
-              <div class="brand-logo">
-                <img src="style/images/logo.svg" alt="logo">
+              <center><div class="brand-logo">
+                {{-- <img src="style/images/logo.svg" alt="logo"> --}}
               </div>
               <h3>LOGIN</h3>
-              <h6 class="font-weight-light">"Masukkan username dan password Anda untuk melanjutkan!"</h6>
+              <h6 class="font-weight-light">"Masukkan username dan password Anda untuk melanjutkan!"</h6></center>
               <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
@@ -36,7 +36,7 @@
                   </div>
                 </div>
                 <div class="my-3">
-                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
+                  <button type="submit" class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                 </div>
                 {{-- <div class="mb-2 d-flex">
                   <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">

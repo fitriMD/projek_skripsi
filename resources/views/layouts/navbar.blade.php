@@ -10,7 +10,7 @@
       <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, {{ Auth::user()->nama }}</h4>
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item">
-          <h4 class="mb-0 font-weight-bold d-none d-xl-block">Senin, 13 Maret 2023</h4>
+          <h4 class="mb-0 font-weight-bold d-none d-xl-block">{{ $today = Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}</h4>
         </li>
       </ul>
       <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -28,7 +28,7 @@
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-            <img src="style/images/faces/face5.jpg" alt="profile"/>
+            <img src="style/images/faces/user3.jpg" alt="profile"/>
             <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -58,8 +58,8 @@
       </div>
       <div class="modal-body">pilih tombol "Logout" dibawah ini</div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+        <button class="btn btn-warning" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-success" href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
           {{ __('Logout') }}
         </a>

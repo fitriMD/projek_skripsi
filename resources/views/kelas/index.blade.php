@@ -29,7 +29,7 @@
                                     @foreach ($kelas as $kls)
                                     <tr>
                                         <td>{{ $kls->nama_kelas }}</td>
-                                        <td>{{ $kls->id_user_walikelas }}</td>
+                                        <td>{{ $kls->nama }}</td>
                                         <td>
                                             <a href="{{ url('kelas/hapus/'. $kls->id_kelas) }}" class="btn btn-danger"
                                                 onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i

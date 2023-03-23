@@ -36,7 +36,7 @@
                                         <td>{{ $data->nama }}</td>
                                         <td>{{ $data->nis }}</td>
                                         <td>{{ $data->gender }}</td>
-                                        <td>{{ $data->id_kelas_siswa }}</td>
+                                        <td>{{ $data->nama_kelas }}</td>
                                         <td>
 
                                             <a href="{{ url('siswa/hapus/'. $data->id_siswa) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i

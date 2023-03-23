@@ -42,7 +42,7 @@
                                 <tbody>
                                     @foreach ($alternatif as $alt)
                                     <tr>
-                                        <td>{{ $alt->id_siswa }}</td>
+                                        <td>{{ $alt->nama }}</td>
                                         <td>{{ $alt->C1 }}</td>
                                         <td>{{ $alt->C2 }}</td>
                                         <td>{{ $alt->C3 }}</td>

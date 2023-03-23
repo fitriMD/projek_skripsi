@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Alternatif;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\DB;
 
 class AlternatifController extends Controller
 {
@@ -16,7 +17,12 @@ class AlternatifController extends Controller
      */
     public function index()
     {
-        $alternatif = Alternatif::with('siswa')->get();
+        //$alternatif = Alternatif::with('siswa')->get();
+        $alternatif = DB::table("data_alternatif")
+                        ->select("data_alternatif.*", "data_siswa.*")
+                        ->join("data_siswa", "data_siswa.id_siswa", "=", "data_alternatif.id_siswa")
+                        ->get();
+
         return view('alternatif.index', compact('alternatif'));
     }
 
@@ -117,7 +123,7 @@ class AlternatifController extends Controller
         $alternatif->C6 = $request->C6;
         $alternatif->save();
 
-        return redirect('daftarKriteria');
+        return redirect('daftarAlternatif');
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class KelasController extends Controller
@@ -16,7 +17,11 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::with('waliKelas')->get();
+        // $kelas = Kelas::with('waliKelas')->get();
+        $kelas = DB::table('data_kelas')
+        ->select('data_kelas.*','data_user.*')
+        ->join('data_user','data_user.id_user','=','data_kelas.id_user_walikelas')
+        ->get();
         return view('kelas.index', compact('kelas'));
     }
 

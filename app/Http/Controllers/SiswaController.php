@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -18,7 +19,11 @@ class SiswaController extends Controller
     public function index()
     {
         
-        $siswa = Siswa::with('kelas')->get();
+        // $siswa = Siswa::with('kelas')->get();
+        $siswa = DB::table('data_siswa')
+                ->select("data_siswa.*","data_kelas.*")
+                ->join('data_kelas','data_kelas.id_kelas','=','data_siswa.id_kelas_siswa')
+                ->get();
         return view('siswa.index', compact('siswa'));
     }
 

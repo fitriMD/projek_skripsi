@@ -34,27 +34,27 @@
                                 <input type="text" name="id_siswa" class="form-control" id="exampleInputName1" placeholder="Nama Siswa">
                             </div> --}}
                             <div class="form-group">
-                                <label for="exampleInputEmail3">C1</label>
+                                <label for="exampleInputEmail3">Rata-rata Rapor (C1)</label>
                                 <input type="text" name="C1" class="form-control" id="exampleInputEmail3" placeholder="Rata-rata Nilai Rapor">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail3">C2</label>
+                                <label for="exampleInputEmail3">Kedisiplinan (C2)</label>
                                 <input type="text" name="C2" class="form-control" id="exampleInputEmail3" placeholder="Kedisiplinan">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail3">C3</label>
+                                <label for="exampleInputEmail3">Ketidakhadiran (C3)</label>
                                 <input type="text" name="C3" class="form-control" id="exampleInputEmail3" placeholder="Ketidakhadiran">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail3">C4</label>
+                                <label for="exampleInputEmail3">Keaktifan dalam kelas (C4)</label>
                                 <input type="text" name="C4" class="form-control" id="exampleInputEmail3" placeholder="Keaktifan Dalam Kelas">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail3">C5</label>
+                                <label for="exampleInputEmail3">Keberanian (C5)</label>
                                 <input type="text" name="C5" class="form-control" id="exampleInputEmail3" placeholder="Keberanian">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail3">C6</label>
+                                <label for="exampleInputEmail3">Sopan santun/akhlak (C6)</label>
                                 <input type="text" name="C6" class="form-control" id="exampleInputEmail3" placeholder="Sopan Santun/Akhlak">
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Submit</button>

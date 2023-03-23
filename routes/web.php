@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AhpController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
@@ -25,6 +26,11 @@ Route::get('/dashboard', function () {
 Route::get('/', function () {
     return redirect('login');
 });
+
+
+Route::get('/ahp', [AhpController::class, 'index']);
+Route::get('/ahp/proses', [AhpController::class, 'main']);
+Route::get('/ahp/reset', [AhpController::class, 'reset']);
 
 /** User */
 Route::resource('daftarUser', UserController::class);
@@ -73,5 +79,9 @@ Route::get('alternatif/update/{id}', [AlternatifController::class, 'edit']);
 /** End : Alternatif */
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+/** Metode */
+// Route::get("/ahp", [AhpController::class, 'main']);
 
 Auth::routes();

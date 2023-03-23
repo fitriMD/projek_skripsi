@@ -16,7 +16,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="mdi mdi-palette menu-icon"></i>
+          <i class="mdi mdi-database menu-icon"></i>
           <span class="menu-title">Master Data</span>
           <i class="menu-arrow"></i>
         </a>
@@ -32,13 +32,13 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="pages/forms/basic_elements.html">
-          <i class="mdi mdi-view-headline menu-icon"></i>
+          <i class="mdi mdi-calculator menu-icon"></i>
           <span class="menu-title">Perhitungan</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="pages/charts/chartjs.html">
-          <i class="mdi mdi-chart-pie menu-icon"></i>
+          <i class="mdi mdi-account-multiple menu-icon"></i>
           <span class="menu-title">Master Siswa</span>
         </a>
       </li>

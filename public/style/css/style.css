@@ -10985,7 +10985,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-success:focus, .btn-success.focus {
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   background-color: #00aa6a;
   border-color: #009d62;
   box-shadow: 0 0 0 0.2rem rgba(38, 215, 149, 0.5);
@@ -20507,7 +20507,7 @@ dl li {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 65px);
-  background: #008000;
+  background: #5CD895;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   padding: 0;
@@ -20532,7 +20532,7 @@ dl li {
 
 .sidebar .nav .sidebar-category p {
   font-size: .875rem;
-  color: #ffffff;
+  color: #05386B;
   font-weight: normal;
   margin-bottom: 0;
 }
@@ -20557,7 +20557,7 @@ dl li {
   align-items: center;
   white-space: nowrap;
   padding: 0.76rem 2.125rem;
-  color: #ffffff;
+  color: #05386B;
   -webkit-transition-duration: 0.45s;
   -moz-transition-duration: 0.45s;
   -o-transition-duration: 0.45s;
@@ -20574,7 +20574,7 @@ dl li {
   font-size: 1.125rem;
   line-height: 1;
   margin-right: 1.125rem;
-  color: #ffffff;
+  color: #fff;
 }
 
 .sidebar .nav .nav-item .nav-link i.menu-icon:before {
@@ -20587,7 +20587,7 @@ dl li {
   -moz-osx-font-smoothing: grayscale;
   margin-left: auto;
   margin-right: 0.2rem;
-  color: #ffffff;
+  color: #05386B;
   font-weight: normal;
 }
 
@@ -20627,7 +20627,7 @@ dl li {
 }
 
 .sidebar .nav .nav-item.active > .nav-link {
-  background: #9ACD32;
+  background: #05386B;
   position: relative;
 }
 
@@ -20650,7 +20650,7 @@ dl li {
 }
 
 .sidebar .nav:not(.sub-menu) > .nav-item:hover > .nav-link {
-  background: #9ACD32;
+  background: #05386B;
   color: #ffffff;
 }
 
@@ -20672,11 +20672,11 @@ dl li {
   position: absolute;
   margin-top: 17px;
   border-radius: 50%;
-  background: #ffffff;
+  background: #05386B;
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link {
-  color: #ffffff;
+  color: #05386B;
   padding: 0.75rem 1rem;
   position: relative;
   font-size: 0.937rem;
@@ -20686,11 +20686,11 @@ dl li {
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link:hover {
-  color: #90EE90;
+  color: #fff;
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link.active {
-  color: #90EE90;
+  color: #fff;
   background: transparent;
 }
 

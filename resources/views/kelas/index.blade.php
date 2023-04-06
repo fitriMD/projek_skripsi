@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Data Kelas</h4>
-                        <a class="btn btn-success my-2" href="/createKelas" style="width: 150px; margin-left:10px;">
+                        <a class="btn btn-success my-2" href="/createKelas" style="width: 153px; margin-left:10px;"><i class="mdi mdi-database-plus"></i>
                             Tambah Kelas</a>
                         <div class="table-responsive">
                             <table class="table table-striped">

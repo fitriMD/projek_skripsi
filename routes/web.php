@@ -7,6 +7,8 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\TopsisController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -19,18 +21,23 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
+
 
 Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('/tps', function () {
+    return view('perhitungan.topsis');
+});
 
+// metode
 Route::get('/ahp', [AhpController::class, 'index']);
 Route::get('/ahp/proses', [AhpController::class, 'main']);
 Route::get('/ahp/reset', [AhpController::class, 'reset']);
+
+Route::get('/topsis', [TopsisController::class, 'main']);
 
 /** User */
 Route::resource('daftarUser', UserController::class);
@@ -81,7 +88,6 @@ Route::get('alternatif/update/{id}', [AlternatifController::class, 'edit']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-/** Metode */
-// Route::get("/ahp", [AhpController::class, 'main']);
+Route::get('/dataSiswa/cetak_pdf',[SiswaController::class, 'cetak_pdf']);
 
 Auth::routes();

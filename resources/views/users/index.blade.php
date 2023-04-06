@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Data User</h4>
-                        <a class="btn btn-success my-2" href="/createUser" style="width: 150px; margin-left:10px;"> Tambah User</a>
+                        <a class="btn btn-success my-2" href="/createUser" style="width: 150px; margin-left:10px;"><i class="mdi mdi-account-plus"></i> Tambah User</a>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>

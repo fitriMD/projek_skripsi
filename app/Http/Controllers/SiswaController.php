@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\Siswa;
+use PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -16,6 +17,10 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         
@@ -130,5 +135,15 @@ class SiswaController extends Controller
     {
         Siswa::find($id)->delete();
         return redirect('daftarSiswa');
+    }
+
+    public function cetak_pdf(){
+        $siswa = DB::table('data_siswa')
+                ->select("data_siswa.*","data_kelas.*")
+                ->join('data_kelas','data_kelas.id_kelas','=','data_siswa.id_kelas_siswa')
+                ->get();
+        // $siswa = Siswa::all();
+        $pdf = PDF::loadview('siswa.cetak_pdf',['siswa'=>$siswa]);
+        return $pdf->stream();
     }
 }

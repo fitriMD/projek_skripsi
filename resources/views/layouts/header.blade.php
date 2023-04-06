@@ -12,5 +12,5 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('style/css/style.css')}}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('style/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{ asset('style/images/logo.png')}}" />
 </head>

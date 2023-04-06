@@ -41,7 +41,7 @@
                             <small>Terakhir diperbarui pada <b>{{ date('d F Y H.i', strtotime( $kolom->created_at )) }}</b></small>      
 
                             <hr>
-                            <h3>A.Matrix Kolom</h3>
+                            <h3>A. Matrix Kolom</h3>
                             <p>Menentukan matriks perbandingan berpasangan (pair-wise comparison
                                 matriks). Hasil perbandingan setiap elemen berupa angka dari 1 sampai 9
                                 yang menunjukkan pentingnya item tersebut. Jika elemen dalam matriks
@@ -69,7 +69,7 @@
                                 </tbody>
                             </table>
 
-                            <h3>B.Hasil Penjumlahan Kolom</h3>
+                            <h3>B. Hasil Penjumlahan Kolom</h3>
                             <p>Menentukan matriks perbandingan berpasangan (pair-wise comparison
                                 matriks). Hasil perbandingan setiap elemen berupa angka dari 1 sampai 9
                                 yang menunjukkan pentingnya item tersebut. Jika elemen dalam matriks
@@ -96,7 +96,7 @@
                                     
                                 </tbody>
                             </table>
-                            <h3>C.Normalisasi Matrix</h3>
+                            <h3>C. Normalisasi Matrix</h3>
                             <p>Membagi setiap nilai dari kolom dengan total kolom yang
                                 bersangkutan untuk memperoleh bentuk normalisasi matriks sehingga
                                 menghasilkan tabel sebagai berikut:</p>
@@ -123,10 +123,10 @@
                             </table>
 
 
-                            <h3>D.Normalisasi Matrix</h3>
-                            <p>Membagi setiap nilai dari kolom dengan total kolom yang
-                                bersangkutan untuk memperoleh bentuk normalisasi matriks sehingga
-                                menghasilkan tabel sebagai berikut:</p>
+                            <h3>D. Bobot Kriteria</h3>
+                            <p>Menjumlahkan nilai-nilai dari setiap baris dan membaginya dengan
+                                jumlah elemen untuk mendapatkan nilai rata-rata sehingga
+                                menghasilkan seperti dibawah ini :</p>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -137,7 +137,7 @@
                                         <th>C5</th>
                                         <th>C6</th>
                                         <th>Jumlah</th>
-                                        <th>Rata-rata</th>
+                                        <th>Rata-rata (Bobot)</th>
                                     </tr>
                                 </thead>
                                 <tbody>

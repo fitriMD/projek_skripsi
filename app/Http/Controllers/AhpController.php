@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class AhpController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index() {
 

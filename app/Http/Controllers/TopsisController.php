@@ -10,10 +10,18 @@ class TopsisController extends Controller
 {
     public function index() {
 
-        $topsis = DB::table("topsis")->get();
+        $topsis = DB::table("topsis");
         return view('perhitungan.topsis', compact('topsis'));
     }
     //
+
+    public function reset() {
+
+        DB::table("topsis")->truncate();
+
+        return redirect('topsis');
+    }
+
     public function main() {
 
         /**
@@ -30,19 +38,21 @@ class TopsisController extends Controller
          *  11. Keputusan atau perangkingan
          */
 
+         // @TODO 3 : rata rata bobot prioritas 
+        $dt_bobot = DB::table("ahp")->first();
 
         // @TODO 1 : menyiapkan dataset 
         $dataset = DB::table("data_alternatif")
                         ->select("data_alternatif.*", "data_siswa.*")
                         ->join("data_siswa", "data_siswa.id_siswa", "=", "data_alternatif.id_siswa")
+                        ->where("id_periode", $dt_bobot->id_periode)
                         ->get();
 
 
         // @TODO 2 : matrix penilaian
         $dt_matrix_penilaian = $this->matrix_penilaian( $dataset );
 
-        // @TODO 3 : rata rata bobot prioritas 
-        $dt_bobot = DB::table("ahp")->first();
+        
         if ( $dt_bobot->bobot_prioritas ) {
 
             // lanjut 
@@ -69,19 +79,38 @@ class TopsisController extends Controller
 
                 // @TODO 8 + 9 + 10: Jarak Alternatif 
                 $dt_jarakAlternatif = $this->jarak_alternatif( $dt_solusi_ideal_positif_negatif, $dt_normalisasi_terbobot );
+
             } else {
 
                 echo '<script>alert("Whoops kriteria kosong")</script>';
                 return redirect('kriteria');
             }
 
-            
-            
+            $json_matrix_penilaian = json_encode( $dt_matrix_penilaian );
+            $json_normalisasi = json_encode( $dt_normalisasi );
+            $json_normalisasi_terbobot = json_encode( $dt_normalisasi_terbobot );
+            $json_solusi_ideal_positif_negatif = json_encode( $dt_solusi_ideal_positif_negatif );
+            $json_relatif = json_encode( $dt_jarakAlternatif );
+
+            // simpan di db
+            $dt_insert = array(
+
+                'matrix_penilaian'                  => $json_matrix_penilaian,
+                'normalisasi'                       => $json_normalisasi,
+                'normalisasi_terbobot'              => $json_normalisasi_terbobot,
+                'solusi_ideal_positif_negatif'      => $json_solusi_ideal_positif_negatif,
+                'jarak_relatif'                     => $json_relatif,
+            );
+
+            DB::table("topsis")->insert($dt_insert);
+            return redirect('topsis');
+    
+
 
         } else { // ahp belum dihitung
 
             echo '<script>alert("Whoops AHP belum diproses")</script>';
-            return redirect('ahp');
+            return redirect('topsis');
         }
     }
 
@@ -119,6 +148,8 @@ class TopsisController extends Controller
             $isi->m_penilaianC4 = $C4;
             $isi->m_penilaianC5 = $C5;
             $isi->m_penilaianC6 = $C6;
+
+            
             
             array_push( $dt_baru, $isi );
         }
@@ -452,14 +483,19 @@ class TopsisController extends Controller
         // print_r( $dt_solusi_ideal_positif_negatif );
         foreach ( $dt_normalisasi_terbobot AS $isi ) {
 
-            // echo "<h1>$isi->id_siswa</h1>";
+            echo "<h1>$isi->id_siswa</h1>";
             // m_normalisasi_terbobotCn
             // print_r( $isi );
             $positif = $this->perhitunganJarakAlternatif( $isi, $dt_solusi_ideal_positif_negatif )["positif"];
             $negatif= $this->perhitunganJarakAlternatif( $isi, $dt_solusi_ideal_positif_negatif )["negatif"];
             
-            $jarak = $negatif / ($negatif + $positif);
-            // echo $jarak;
+            $jarak = 0;
+            if ( $negatif != 0 && $positif != 0 ) {
+
+                $jarak = $negatif / ($negatif + $positif);
+            }
+            
+            echo $negatif.' '. $positif;
 
             $isi->jarakAlternatifPositif = $positif;
             $isi->jarakAlternatifNegatif = $negatif;
@@ -468,6 +504,9 @@ class TopsisController extends Controller
 
             array_push( $dt_baru, $isi );
         }
+
+        // Perangkingan
+        usort($dt_baru, fn($a, $b) => $a->hasilJarak < $b->hasilJarak);
 
         return $dt_baru;
     }
@@ -485,6 +524,7 @@ class TopsisController extends Controller
         $C6 = pow($n_terbobot->m_normalisasi_terbobotC6 - $dt_solusi_ideal_positif_negatif[5]->solusiPositif, 2);
 
         $SQRT_positif = sqrt( $C1 + $C2 + $C3 + $C4 + $C5 + $C6);
+        echo "<h5>$C1 = $C2 = $C3 = $C4 = $C5 = $C6</h5>";
 
         // negatif
         $C1 = pow($n_terbobot->m_normalisasi_terbobotC1 - $dt_solusi_ideal_positif_negatif[0]->solusiNegatif, 2);

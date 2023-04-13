@@ -1,55 +1,76 @@
-@extends('layouts.template')
+@extends('layouts2.template')
 @section('content')
 <!-- partial -->
-<div class="main-panel">
-    <div class="content-wrapper">
-        <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Data Siswa</h4>
-                        <a class="btn btn-success my-2" href="/createSiswa" style="width: 150px; margin-left:10px;"><i class="mdi mdi-database-plus"></i> Tambah Data</a>
-                        <a class="btn btn-info my-2" href="/dataSiswa/cetak_pdf" style="width: 150px; margin-left:10px;"><i class="mdi mdi-download"></i> Cetak Data</a>
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Nama
-                                        </th>
-                                        <th>
-                                            Nomor Induk Siswa
-                                        </th>
-                                        <th>
-                                            Jenis Kelamin
-                                        </th>
-                                        <th>
-                                            Kelas
-                                        </th>
-                                        <th>
-                                            Action
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($siswa as $data)
-                                    <tr>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->nis }}</td>
-                                        <td>{{ $data->gender }}</td>
-                                        <td>{{ $data->nama_kelas }}</td>
-                                        <td>
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <center>
+                        <h2>Data Siswa</h2>
+                        <h2><small>(Kandidat Siswa Teladan)</small></h2>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="row column2 graph margin_bottom_30">
+            <div class="col-md-l2 col-lg-12">
+                <div class="white_shd full">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"><i class="fa fa-users"></i> Data Siswa</h4>
+                            <a class="btn btn-success my-2" href="/createSiswa"
+                                style="width: 125px; margin-left:0px;"><i class="fa fa-plus"></i> Tambah</a>
+                            <a class="btn btn-info my-2" href="/dataSiswa/cetak_pdf"
+                                style="width: 125px; margin-left:10px;"><i class="fa fa-download"></i> Cetak</a>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                No
+                                            </th>
+                                            <th>
+                                                Nama
+                                            </th>
+                                            <th>
+                                                Nomor Induk Siswa
+                                            </th>
+                                            <th>
+                                                Jenis Kelamin
+                                            </th>
+                                            <th>
+                                                Kelas
+                                            </th>
+                                            <th>
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1; ?>
+                                        @foreach ($siswa as $data)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $data->nama }}</td>
+                                            <td>{{ $data->nis }}</td>
+                                            <td>{{ $data->gender }}</td>
+                                            <td>{{ $data->nama_kelas }}</td>
+                                            <td>
 
-                                            <a href="{{ url('siswa/hapus/'. $data->id_siswa) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
-                                                class="fa fa-trash"></i> Hapus</a>
-                                            <a href="{{ url('siswa/update/'. $data->id_siswa) }}" class="btn btn-warning"><i
-                                                    class="fa fa-trash"></i> Update</a>    
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    
-                                </tbody>
-                            </table>
+                                                <a href="{{ url('siswa/hapus/'. $data->id_siswa) }}"
+                                                    class="btn btn-danger"
+                                                    onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
+                                                        class="fa fa-trash"></i> Hapus</a>
+                                                <a href="{{ url('siswa/update/'. $data->id_siswa) }}"
+                                                    class="btn btn-warning"><i class="fa fa-edit"></i> Update</a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

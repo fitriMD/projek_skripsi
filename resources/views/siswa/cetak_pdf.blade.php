@@ -15,7 +15,7 @@
         }
     </style>
     <center>
-        <h3>Daftar Siswa Calon Teladan</h3>
+        <h3>Kandidat Siswa Teladan</h3>
         <h4>MI As-salam Watestanjung</h4>
     </center>
     <table class='table table-bordered'>

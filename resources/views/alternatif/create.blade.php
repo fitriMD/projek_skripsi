@@ -1,7 +1,17 @@
-@extends('layouts.template')
+@extends('layouts2.template')
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper">
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <center>
+                        <h2>Data Alternatif</h2>
+                        <h2><small>(Nilai kandidat siswa teladan sesuai kriteria)</small></h2>
+                    </center>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
@@ -26,6 +36,15 @@
                                     <option selected disabled>Pilih Siswa</option>
                                     @foreach($siswa as $sw)
                                     <option value="{{$sw->id_siswa}}">{{ $sw->nama }}</option>
+                                    @endforeach
+                                </select>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputCity1">Periode</label>
+                                <select class="form-control" name="id_periode" id="exampleSelectGender">
+                                    <option selected disabled>Pilih Periode</option>
+                                    @foreach($periode as $p)
+                                    <option value="{{$p->id_periode}}" @if ( $p->status == "aktif" ) selected="selected" @endif>{{ $p->nama_periode }}</option>
                                     @endforeach
                                 </select>                            
                             </div>

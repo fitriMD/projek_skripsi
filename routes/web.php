@@ -9,6 +9,7 @@ use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\TopsisController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PeriodeController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -23,21 +24,26 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard2');
+// });
 
 Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('/tps', function () {
-    return view('perhitungan.topsis');
+Route::get('/template', function () {
+    return view('layouts2.template');
 });
 
 // metode
 Route::get('/ahp', [AhpController::class, 'index']);
-Route::get('/ahp/proses', [AhpController::class, 'main']);
+Route::post('/ahp/proses', [AhpController::class, 'main']);
 Route::get('/ahp/reset', [AhpController::class, 'reset']);
 
-Route::get('/topsis', [TopsisController::class, 'main']);
+Route::get('/topsis', [TopsisController::class, 'index']);
+Route::get('/topsis/proses', [TopsisController::class, 'main']);
+Route::get('/topsis/reset', [TopsisController::class, 'reset']);
 
 /** User */
 Route::resource('daftarUser', UserController::class);
@@ -85,7 +91,17 @@ Route::get('alternatif/hapus/{id}', [AlternatifController::class, 'destroy']);
 Route::get('alternatif/update/{id}', [AlternatifController::class, 'edit']);
 /** End : Alternatif */
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/** Periode */
+Route::resource('daftarPeriode', PeriodeController::class);
+Route::get('/createPeriode', [PeriodeController::class, 'create']);
+Route::post('/periode-update/{id}', [PeriodeController::class, 'update']);
+Route::post('createperiode', [PeriodeController::class, 'store'])->name('periode.create');
+Route::get('periode/hapus/{id}', [PeriodeController::class, 'destroy']);
+Route::get('periode/update/{id}', [PeriodeController::class, 'edit']);
+/** End : User */
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('/dataSiswa/cetak_pdf',[SiswaController::class, 'cetak_pdf']);

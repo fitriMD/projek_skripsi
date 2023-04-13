@@ -1,7 +1,17 @@
-@extends('layouts.template')
+@extends('layouts2.template')
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper">
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <center>
+                        <h2>Data Alternatif</h2>
+                        <h2><small>(Nilai kandidat siswa teladan sesuai kriteria)</small></h2>
+                    </center>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
@@ -33,27 +43,27 @@
                                 <input type="text" name="id_siswa" class="form-control" id="id_siswa" placeholder="Nama" value="{{ $alternatif->id_siswa }}" aria-describedby="nama" required>
                             </div> --}}
                             <div class="form-group">
-                                <label for="nama">C1</label>
+                                <label for="nama">Rata-rata Rapor (C1)</label>
                                 <input type="text" name="C1" class="form-control" id="name" placeholder="Nama" value="{{ $alternatif->C1 }}" aria-describedby="nama" required>
                             </div>
                             <div class="form-group">
-                                <label for="nama">C2</label>
+                                <label for="nama">Kedisiplinan (C2)</label>
                                 <input type="text" name="C2" class="form-control" id="name" placeholder="Nama" value="{{ $alternatif->C2 }}" aria-describedby="nama" required>
                             </div>
                             <div class="form-group">
-                                <label for="nama">C3</label>
+                                <label for="nama">Ketidakhadiran (C3)</label>
                                 <input type="text" name="C3" class="form-control" id="name" placeholder="Nama" value="{{ $alternatif->C3 }}" aria-describedby="nama" required>
                             </div>
                             <div class="form-group">
-                                <label for="nama">C4</label>
+                                <label for="nama">Keaktifan dalam kelas (C4)</label>
                                 <input type="text" name="C4" class="form-control" id="name" placeholder="Nama" value="{{ $alternatif->C4 }}" aria-describedby="nama" required>
                             </div>
                             <div class="form-group">
-                                <label for="nama">C5</label>
+                                <label for="nama">Keberanian (C5)</label>
                                 <input type="text" name="C5" class="form-control" id="name" placeholder="Nama" value="{{ $alternatif->C5 }}" aria-describedby="nama" required>
                             </div>
                             <div class="form-group">
-                                <label for="nama">C6</label>
+                                <label for="nama">Sopan santun/akhlak (C6)</label>
                                 <input type="text" name="C6" class="form-control" id="name" placeholder="Nama" value="{{ $alternatif->C6 }}" aria-describedby="nama" required>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Simpan</button>

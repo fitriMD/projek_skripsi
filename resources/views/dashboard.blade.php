@@ -88,10 +88,20 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title"><h2>Hasil Perangking Siswa Teladan</h2></h4>
-          <p class="card-description">
-            Add class <code>.table-{color}</code>
-          </p>
-          <div class="table-responsive pt-3">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Periode</label>
+                <div class="col-sm-9">
+                  <select class="form-control">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
             <table class="table table-bordered">
               <thead>
                 <tr>

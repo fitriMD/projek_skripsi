@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Periode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,8 @@ class AhpController extends Controller
     public function index() {
 
         $ahp = DB::table("ahp")->get();
-        return view('perhitungan.ahp', compact('ahp'));
+        $periode = Periode::all();
+        return view('perhitungan.ahp', compact('ahp', 'periode'));
     }
 
 
@@ -28,9 +30,10 @@ class AhpController extends Controller
     }
 
     // perhitungan AHP
-    public function main() {
+    public function main( Request $request ) {
 
         // Tahapan perhitungan AHP
+        $id_periode = $request->id_periode;
 
         // A. Matrix berpasangan kriteria
         $matrix = $this->matrix_berpasangan_kriteria();
@@ -59,6 +62,7 @@ class AhpController extends Controller
 
         $dt_insert = array(
 
+            'id_periode'            => $id_periode,
             'matrix_perbandingan'   => $json_matrix_perbandingan,
             'bobot_prioritas'       => $json_matrix_bobot
         );

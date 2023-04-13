@@ -10,7 +10,7 @@
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('style/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('style/css/style2.css')}}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('style/images/logo.png')}}" />
 </head>

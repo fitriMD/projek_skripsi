@@ -1,7 +1,16 @@
-@extends('layouts.template')
+@extends('layouts2.template')
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper">
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <center>
+                        <h2>Data Kelas</h2>
+                    </center>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">

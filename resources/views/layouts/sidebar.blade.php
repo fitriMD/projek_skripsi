@@ -15,6 +15,12 @@
         <span></span>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/daftarPeriode">
+          <i class="mdi mdi-server menu-icon"></i>
+          <span class="menu-title">Periode</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="mdi mdi-database menu-icon"></i>
           <span class="menu-title">Master Data</span>
@@ -39,7 +45,7 @@
         <div class="collapse" id="auth">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="/ahp">AHP</a></li>
-            <li class="nav-item"> <a class="nav-link" href="/tps">TOPSIS</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/topsis">TOPSIS</a></li>
           </ul>
         </div>
       </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Alternatif;
+use App\Models\Periode;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\DB;
 
@@ -38,7 +39,8 @@ class AlternatifController extends Controller
     public function create()
     {
         $siswa = Siswa::all();
-        return view('alternatif.create', ['siswa' => $siswa]);
+        $periode = Periode::all();
+        return view('alternatif.create', compact('siswa', 'periode'));
     }
 
     /**

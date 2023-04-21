@@ -42,7 +42,8 @@ Route::post('/ahp/proses', [AhpController::class, 'main']);
 Route::get('/ahp/reset', [AhpController::class, 'reset']);
 
 Route::get('/topsis', [TopsisController::class, 'index']);
-Route::get('/topsis/proses', [TopsisController::class, 'main']);
+Route::get('/topsis/detail/{id_topsis}', [TopsisController::class, 'detail']);
+Route::post('/topsis/proses', [TopsisController::class, 'main']);
 Route::get('/topsis/reset', [TopsisController::class, 'reset']);
 
 /** User */

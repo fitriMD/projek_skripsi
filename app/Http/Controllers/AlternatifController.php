@@ -24,8 +24,9 @@ class AlternatifController extends Controller
     {
         //$alternatif = Alternatif::with('siswa')->get();
         $alternatif = DB::table("data_alternatif")
-                        ->select("data_alternatif.*", "data_siswa.*")
+                        ->select("data_alternatif.*", "data_siswa.*", "periode.*")
                         ->join("data_siswa", "data_siswa.id_siswa", "=", "data_alternatif.id_siswa")
+                        ->join("periode", "periode.id_periode", "=", "data_alternatif.id_periode")
                         ->get();
 
         return view('alternatif.index', compact('alternatif'));
@@ -53,17 +54,22 @@ class AlternatifController extends Controller
     {
         $request->validate([
             'id_siswa' => 'required',
+            'id_periode' => 'required',
             'C1' => 'required',
             'C2' => 'required',
             'C3' => 'required',
             'C4' => 'required',
             'C5' => 'required',
-            'C6' => 'required',
+            'C6' => 'required|numeric',
 
+        ],[
+
+            'C6.numeric'    => "Harap masukkan bilangan desimal"
         ]);
 
         $alternatif = new Alternatif();
         $alternatif->id_siswa = $request->get('id_siswa');
+        $alternatif->id_periode = $request->get('id_periode');
         $alternatif->C1 = $request->get('C1');
         $alternatif->C2 = $request->get('C2');
         $alternatif->C3 = $request->get('C3');

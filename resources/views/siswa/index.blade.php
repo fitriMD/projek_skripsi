@@ -31,6 +31,9 @@
                                                 No
                                             </th>
                                             <th>
+                                                Periode Pemilihan
+                                            </th>
+                                            <th>
                                                 Nama
                                             </th>
                                             <th>
@@ -52,6 +55,7 @@
                                         @foreach ($siswa as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
+                                            <td>{{ $data->nama_periode }}</td>
                                             <td>{{ $data->nama }}</td>
                                             <td>{{ $data->nis }}</td>
                                             <td>{{ $data->gender }}</td>
@@ -61,9 +65,9 @@
                                                 <a href="{{ url('siswa/hapus/'. $data->id_siswa) }}"
                                                     class="btn btn-danger"
                                                     onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
-                                                        class="fa fa-trash"></i> Hapus</a>
+                                                        class="fa fa-trash"></i> </a>
                                                 <a href="{{ url('siswa/update/'. $data->id_siswa) }}"
-                                                    class="btn btn-warning"><i class="fa fa-edit"></i> Update</a>
+                                                    class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

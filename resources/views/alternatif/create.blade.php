@@ -75,9 +75,12 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Sopan santun/akhlak (C6)</label>
                                 <input type="text" name="C6" class="form-control" id="exampleInputEmail3" placeholder="Sopan Santun/Akhlak">
+                                @error('C6')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                            <button class="btn btn-light">Cancel</button>
+                            <a href="{{ url('/daftarAlternatif')}}" class="btn btn-light">Cancel</a>
                         </form>
                     </div>
                 </div>

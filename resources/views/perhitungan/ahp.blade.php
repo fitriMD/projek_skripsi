@@ -26,9 +26,9 @@
                                 <h2 style="margin: 0px">Perhitungan Kosong</h2>
                                 <h4>Analytical Hierarchy Process (AHP)</h4>
                                 <div>
-                                    <a href="{{ url('ahp/proses') }}" class="btn btn-success"
+                                    {{-- <a href="{{ url('ahp/proses') }}" class="btn btn-success"
                                         onclick="return confirm('Apakah anda ingin melakukan proses perhitungan ?')">Hitung
-                                        Sekarang</a>
+                                        Sekarang</a> --}}
 
                                     <a href="javascript:;" data-toggle="modal" data-target="#tambah" class="btn btn-success">Hitung Sekarang</a>
                                     <!-- Modal -->

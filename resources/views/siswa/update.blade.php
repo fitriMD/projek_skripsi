@@ -32,6 +32,16 @@
                                 <h4 class="card-title">Update Data Siswa</h4>
                                 <form class="forms-sample">
                                     <div class="form-group">
+                                        <label for="periode">Periode</label>
+                                        <select class="form-control" id="id_periode" name="id_periode">
+                                            @foreach($periode as $p)
+                                            <option value="{{$p->id_periode}}" @php if ( $p->id_kelas ==
+                                                $siswa->id_periode ) echo 'selected="selected"'; @endphp>{{
+                                                $p->nama_periode }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="nama">Nama Siswa</label>
                                         <input type="text" name="nama" class="form-control" id="name" placeholder="Nama"
                                             value="{{ $siswa->nama }}" aria-describedby="nama" required>
@@ -61,7 +71,7 @@
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                                    <button class="btn btn-light">Cancel</button>
+                                    <a href="{{ url('/daftarSiswa')}}" class="btn btn-light">Cancel</a>
                                 </form>
                         </div>
                     </div>

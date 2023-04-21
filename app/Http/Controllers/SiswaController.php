@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kelas;
+use App\Models\Periode;
 use App\Models\Siswa;
 use PDF;
 use Illuminate\Support\Facades\DB;
@@ -26,8 +27,9 @@ class SiswaController extends Controller
         
         // $siswa = Siswa::with('kelas')->get();
         $siswa = DB::table('data_siswa')
-                ->select("data_siswa.*","data_kelas.*")
+                ->select("data_siswa.*","data_kelas.*","periode.*")
                 ->join('data_kelas','data_kelas.id_kelas','=','data_siswa.id_kelas_siswa')
+                ->join('periode','periode.id_periode','=','data_siswa.id_periode')
                 ->get();
         return view('siswa.index', compact('siswa'));
     }
@@ -40,7 +42,8 @@ class SiswaController extends Controller
     public function create()
     {
         $kelas = Kelas::all();
-        return view('siswa.create', ['kelas' => $kelas]);
+        $periode = Periode::all();
+        return view('siswa.create', compact('kelas', 'periode'));
     }
 
     /**
@@ -52,6 +55,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'id_periode' => 'required',
             'nis' => 'required',
             'nama' => 'required',
             'gender' => 'required',
@@ -60,6 +64,7 @@ class SiswaController extends Controller
         ]);
 
         $siswa = new Siswa();
+        $siswa->id_periode = $request->get('id_periode');
         $siswa->nis = $request->get('nis');
         $siswa->nama = $request->get('nama');
         $siswa->gender = $request->get('gender');
@@ -101,8 +106,9 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::find($id);
         $kelas = Kelas::all();
+        $periode = Periode::all();
   
-        return view('siswa.update', ['siswa' => $siswa, 'kelas' => $kelas]);
+        return view('siswa.update', compact('siswa', 'kelas', 'periode'));
     }
 
     /**
@@ -115,6 +121,7 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         $siswa = Siswa::find($id);
+        $siswa->id_periode = $request->id_periode;
         $siswa->nis = $request->nis;
         $siswa->nama = $request->nama;
         $siswa->gender = $request->gender;

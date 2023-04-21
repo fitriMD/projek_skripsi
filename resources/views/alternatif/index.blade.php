@@ -30,6 +30,9 @@
                                             Nama Siswa
                                         </th>
                                         <th>
+                                            Periode Pemilihan
+                                        </th>
+                                        <th>
                                             C1
                                         </th>
                                         <th>
@@ -58,6 +61,7 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $alt->nama }}</td>
+                                        <td>{{ $alt->nama_periode }}</td>
                                         <td>{{ $alt->C1 }}</td>
                                         <td>{{ $alt->C2 }}</td>
                                         <td>{{ $alt->C3 }}</td>
@@ -67,9 +71,9 @@
                                         <td>
 
                                             <a href="{{ url('alternatif/hapus/'. $alt->id_alternatif) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
-                                                class="fa fa-trash"></i> Hapus</a>
+                                                class="fa fa-trash"></i></a>
                                             <a href="{{ url('alternatif/update/'. $alt->id_alternatif) }}" class="btn btn-warning"><i
-                                                    class="fa fa-edit"></i> Update</a>    
+                                                    class="fa fa-edit"></i></a>    
                                         </td>
                                     </tr>
                                     @endforeach

@@ -41,7 +41,7 @@
                                         </select>                            
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputName1">NIS</label>
+                                        <label for="exampleInputName1">Nomor Induk Siswa</label>
                                         <input type="text" name="nis" class="form-control" id="exampleInputName1"
                                             placeholder="Nomor Induk Siswa">
                                     </div>
@@ -54,8 +54,8 @@
                                         <label for="exampleSelectGender">Jenis Kelamin</label>
                                         <select class="form-control" name="gender" id="exampleSelectGender">
                                             <option selected disabled>Jenis Kelamin</option>
-                                            <option value="L">Male</option>
-                                            <option value="P">Female</option>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -68,7 +68,7 @@
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <button class="btn btn-light">Cancel</button>
+                                    <a href="{{ url('/daftarSiswa')}}" class="btn btn-light">Cancel</a>
                                 </form>
                              </form>
                         </div>

@@ -66,7 +66,7 @@
                            </div>
                            <div class="field margin_0">
                               <label class="label_field hidden">hidden label</label>
-                              <button type="submit" class="main_bt">Sing In</button>
+                              <button type="submit" class="main_bt">Sign In</button>
                            </div>
                         </fieldset>
                      </form>

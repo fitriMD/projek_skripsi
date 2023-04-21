@@ -109,10 +109,10 @@
                                             <p class="overview"><b>Sistem Pendukung Keputusan Pemilihan Siswa Teladan</b>SIKUNGKESDAN</p>
                                         </div>
                                         <div class="item carousel-item">
-                                            <div class="img-box"><img src="{{ asset('style2/images/layout_img/user_img.jpg')}}" alt=""></div>
-                                            <p class="testimonial">Sed ut perspiciatis unde omnis iste
-                                                natus error sit voluptatem accusantium doloremque
-                                                laudantium, totam rem aperiam, eaque ipsa quae..</p>
+                                            <div class="img-responsive"><img src="{{ asset('style2/images/fc2.png')}}" alt=""></div>
+                                            <p class="testimonial">User (Wali Kelas & Kepala Sekolah) login menggunakan username & password yang diberikan oleh admin. Data Siswa dan data alternatif diinputkan oleh wali kelas yang telah
+                                                merekomendasikan 5 siswa sebagai kandidat siswa teladan. Proses perhitungan data akan dilakukan oleh admin yang nantinya akan ditampilkan di fitur hasil perhitungan serta dashboard.
+                                            </p>
                                             <p class="overview"><b>Alur Pemilihan Siswa Teladan</b></p>
                                         </div>
                                     </div>
@@ -132,13 +132,7 @@
                 </div>
             </div>
         </div>
-        <div class="row column3">
-        </div>
-
-
-       
         @if ( $topsis->count() != 0 )
-
         
         <div class="row column4 graph">
             <div class="col-md-12">
@@ -152,17 +146,6 @@
                         <div class="dash_head">
                             <h3><span><i class="fa fa-bookmark"></i> Hasil Perangkingan</span><span class="plus_green_bt"></span></h3>
                         </div>
-                        <div class="list_cont">
-                            <p>Perangkingan Pemilihan Siswa Periode ........</p>
-                        </div>
-                        <div class="dropdown" style="width: 125px; margin-left:40px;">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Pilih Periode</button>
-                            <div class="dropdown-menu">
-                               <a class="dropdown-item" href="#">Dropdown link</a>
-                               <a class="dropdown-item" href="#">Dropdown link</a>
-                               <a class="dropdown-item" href="#">Dropdown link</a>
-                            </div>
-                         </div>
                         <div class="task_list_main">
                             <ul class="task_list">
                                 @foreach ($json_relatif AS $no => $isi)
@@ -176,7 +159,6 @@
                 </div>
             </div>
         </div>
-
         @endif
     </div>
 </div>

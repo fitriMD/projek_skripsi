@@ -13,7 +13,6 @@
                    <li>
                       <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{{ asset('style2/images/user.png') }}" alt="#" /><span class="name_user">{{ Auth::user()->nama }}</span></a>
                       <div class="dropdown-menu">
-                         <a class="dropdown-item" href="profile.html">My Profile</a>
                          <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                       </div>
                    </li>

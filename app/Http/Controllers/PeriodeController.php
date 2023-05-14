@@ -42,7 +42,6 @@ class PeriodeController extends Controller
     {
         $periode = new Periode();
         $periode->nama_periode = $request->input('nama_periode');
-        $periode->hasil_perhitungan = $request->input('hasil_perhitungan');
         $periode->status = $request->input('status');
 
         
@@ -109,7 +108,6 @@ class PeriodeController extends Controller
     {
         $periode = Periode::find($id);
         $periode->nama_periode = $request->nama_periode;
-        $periode->hasil_perhitungan = $request->hasil_perhitungan;
         $periode->status = $request->status;
 
 

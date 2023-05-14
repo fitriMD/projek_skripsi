@@ -20,11 +20,15 @@
        <h4>General</h4>
        <ul class="list-unstyled components">
           <li><a href="/dashboard"><i class="fa fa-dashboard green_color"></i> <span>Dashboard</span></a></li>
+          @if (Auth::user()->roles=='admin')
           <li><a href="/daftarPeriode"><i class="fa fa-clock-o orange_color"></i> <span>Periode</span></a></li>
+          @endif
           <li>
              <a href="#element" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-database purple_color"></i> <span>Master Data</span></a>
              <ul class="collapse list-unstyled" id="element">
+                @if (Auth::user()->roles=='admin')
                 <li><a href="/daftarUser">> <span>Data User</span></a></li>
+                @endif
                 <li><a href="/daftarKelas">> <span>Data Kelas</span></a></li>
                 <li><a href="/daftarSiswa">> <span>Data Siswa</span></a></li>
              </ul>
@@ -40,6 +44,7 @@
                </li>
             </ul>
          </li>
+         @if (Auth::user()->roles=='admin')
           <li>
              <a href="#apps" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-calculator blue2_color"></i> <span>Proses Perhitungan</span></a>
              <ul class="collapse list-unstyled" id="apps">
@@ -47,7 +52,8 @@
                 <li><a href="/topsis">> <span>TOPSIS</span></a></li>
              </ul>
           </li>
-          <li><a href="tables.html"><i class="fa fa-folder-open purple_color2"></i> <span>Hasil Perhitungan</span></a></li>
+          @endif
+          <li><a href="/hasilPerhitungan"><i class="fa fa-folder-open purple_color2"></i> <span>Hasil Perhitungan</span></a></li>
           {{-- <li><a href="price.html"><i class="fa fa-briefcase blue1_color"></i> <span>Pricing Tables</span></a></li>
           <li>
              <a href="contact.html">

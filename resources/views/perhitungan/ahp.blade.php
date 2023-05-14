@@ -23,14 +23,14 @@
                             @if ( $ahp->count() == 0 )
                             <div class="text-center">
                                 @php echo svgku() @endphp
-                                <h2 style="margin: 0px">Perhitungan Kosong</h2>
+                                <h4 style="margin: 0px">Perhitungan Kosong</h4>
                                 <h4>Analytical Hierarchy Process (AHP)</h4>
                                 <div>
-                                    {{-- <a href="{{ url('ahp/proses') }}" class="btn btn-success"
+                                    <a href="{{ url('ahp/proses') }}" class="btn btn-success"
                                         onclick="return confirm('Apakah anda ingin melakukan proses perhitungan ?')">Hitung
-                                        Sekarang</a> --}}
+                                        Sekarang</a>
 
-                                    <a href="javascript:;" data-toggle="modal" data-target="#tambah" class="btn btn-success">Hitung Sekarang</a>
+                                    {{-- <a href="javascript:;" data-toggle="modal" data-target="#tambah" class="btn btn-success">Hitung Sekarang</a>
                                     <!-- Modal -->
                                     <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -55,7 +55,7 @@
                                         </form>
                                         </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             @else

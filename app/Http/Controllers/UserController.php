@@ -44,19 +44,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'nama' => ['required', 'string', 'max:75'],
-        //     'email' => ['required', 'string', 'email', 'max:75', 'unique:users'],
-        //     'nip' => ['required', 'string', 'max:18'],
-        //     'username' => ['required', 'string', 'max:30', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
-        //     'role' => ['required','in:admin,kepala_sekolah,wali_kelas'],
-        // ]);
 
         $user = new User;
         $user->nama = $request->input('nama');
-        $user->email = $request->input('email');
-        $user->nip = $request->input('nip');
+        // $user->email = $request->input('email');
+        // $user->nip = $request->input('nip');
         $user->username = $request->input('username');
         $user->roles = $request->input('roles');
         $user->password = Hash::make($request->input('password'));
@@ -107,8 +99,6 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->nama = $request->nama;
-        $user->email = $request->email;
-        $user->nip = $request->nip;
         $user->username = $request->username;
         $user->roles = $request->roles;
         $user->save();

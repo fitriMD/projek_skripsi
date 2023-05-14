@@ -55,22 +55,37 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Rata-rata Rapor (C1)</label>
                                 <input type="text" name="C1" class="form-control" id="exampleInputEmail3" placeholder="Rata-rata Nilai Rapor">
+                                @error('C1')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Kedisiplinan (C2)</label>
                                 <input type="text" name="C2" class="form-control" id="exampleInputEmail3" placeholder="Kedisiplinan">
+                                @error('C2')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Ketidakhadiran (C3)</label>
                                 <input type="text" name="C3" class="form-control" id="exampleInputEmail3" placeholder="Ketidakhadiran">
+                                @error('C3')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail3">Keaktifan dalam kelas (C4)</label>
+                                <label for="exampleInputEmail3">Keaktifan Dalam Kelas (C4)</label>
                                 <input type="text" name="C4" class="form-control" id="exampleInputEmail3" placeholder="Keaktifan Dalam Kelas">
+                                @error('C4')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Keberanian (C5)</label>
                                 <input type="text" name="C5" class="form-control" id="exampleInputEmail3" placeholder="Keberanian">
+                                @error('C5')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Sopan santun/akhlak (C6)</label>

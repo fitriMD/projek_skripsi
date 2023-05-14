@@ -37,16 +37,6 @@
                                             placeholder="Nama Lengkap">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail3">E-mail</label>
-                                        <input type="email" name="email" class="form-control" id="exampleInputEmail3"
-                                            placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nip">NIP</label>
-                                        <input type="text" name="nip" class="form-control" id="nip"
-                                            placeholder="Nomor Induk Pegawai">
-                                    </div>
-                                    <div class="form-group">
                                         <label for="username">Username</label>
                                         <input type="username" name="username" class="form-control" id="username"
                                             placeholder="Username">
@@ -65,7 +55,7 @@
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <button class="btn btn-light">Cancel</button>
+                                    <a href="{{ url('/daftarUser')}}" class="btn btn-light">Cancel</a>
                                 </form>
                         </div>
                     </div>

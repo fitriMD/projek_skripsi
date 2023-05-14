@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Periode;
+use App\Models\Topsis;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Stmt\Echo_;
@@ -14,6 +16,20 @@ class TopsisController extends Controller
         $topsis = DB::table("topsis")->select("topsis.*", "periode.*")->join("periode", "periode.id_periode", "=", "topsis.id_periode");
         $periode = Periode::all();
         return view('perhitungan.topsis', compact('topsis', 'periode'));
+    }
+
+    public function hasil() {
+
+        $topsis = DB::table("topsis")->select("topsis.*", "periode.*")->join("periode", "periode.id_periode", "=", "topsis.id_periode");
+        $periode = Periode::all();
+        return view('perhitungan.hasil_perhitungan', compact('topsis', 'periode'));
+    }
+
+    public function perangkingan( $id_topsis ) {
+
+        $topsis = DB::table("topsis")->select("topsis.*", "periode.*")->join("periode", "periode.id_periode", "=", "topsis.id_periode")
+        ->where('id_topsis', $id_topsis)->first();
+        return view('perhitungan.perangkingan', compact('topsis'));
     }
     
     public function detail( $id_topsis ) {
@@ -560,5 +576,19 @@ class TopsisController extends Controller
             'positif' => $SQRT_positif,
             'negatif' => $SQRT_negatif
         );
+    }
+
+    public function destroy($id)
+    {
+        Topsis::find($id)->delete();
+        return redirect('topsis');
+    }
+
+    public function cetak_pdf(){
+        $topsis = DB::table("topsis")
+                ->select("topsis.*", "periode.*")
+                ->join("periode", "periode.id_periode", "=", "topsis.id_periode");
+        $pdf = PDF::loadview('perhitungan.cetak_pdf',['topsis'=>$topsis]);
+        return $pdf->stream();
     }
 }

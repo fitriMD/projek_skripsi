@@ -19,8 +19,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title"><i class="fa fa-users"></i> Data Siswa</h4>
+                            @if (Auth::user()->roles=='admin' && Auth::user()->roles = 'wali_kelas')
                             <a class="btn btn-success my-2" href="/createSiswa"
                                 style="width: 125px; margin-left:0px;"><i class="fa fa-plus"></i> Tambah</a>
+                            @endif
                             <a class="btn btn-info my-2" href="/dataSiswa/cetak_pdf"
                                 style="width: 125px; margin-left:10px;"><i class="fa fa-download"></i> Cetak</a>
                             <div class="table-responsive">
@@ -37,7 +39,7 @@
                                                 Nama
                                             </th>
                                             <th>
-                                                Nomor Induk Siswa
+                                                NIS
                                             </th>
                                             <th>
                                                 Jenis Kelamin

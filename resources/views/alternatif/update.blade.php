@@ -67,7 +67,7 @@
                                 <input type="text" name="C6" class="form-control" id="name" placeholder="Nama" value="{{ $alternatif->C6 }}" aria-describedby="nama" required>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                            <button class="btn btn-light">Cancel</button>
+                            <a href="{{ url('/daftarAlternatif')}}" class="btn btn-light">Cancel</a>
                         </form>
                     </div>
                 </div>

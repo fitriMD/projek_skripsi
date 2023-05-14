@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                            <button class="btn btn-light">Cancel</button>
+                            <a href="{{ url('/daftarKriteria')}}" class="btn btn-light">Cancel</a>
                         </form>
                     </div>
                 </div>

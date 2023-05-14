@@ -36,16 +36,12 @@
                                 <input type="text" name="nama" class="form-control" id="name" placeholder="Nama" value="{{ $user->nama }}" aria-describedby="nama" required>
                             </div>
                             <div class="form-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" name="email" class="form-control" id="exampleInputEmail3" placeholder="Email" value="{{ $user->email }}" aria-describedby="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">NIP</label>
-                                <input type="text" name="nip" class="form-control" id="exampleInputEmail3" placeholder="Email" value="{{ $user->nip }}" aria-describedby="email" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" class="form-control" id="username" placeholder="Username" value="{{ $user->username }}" aria-describedby="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Password</label>
+                                <input type="text" name="password" class="form-control" id="password" placeholder="password" value="{{ $user->password }}" aria-describedby="password" required>
                             </div>
                             <div class="form-group">
                                 <label for="role">Role</label> 
@@ -56,7 +52,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                            <button class="btn btn-light">Cancel</button>
+                            <a href="{{ url('/daftarUser')}}" class="btn btn-light">Cancel</a>
                         </form>
                     </div>
                 </div>

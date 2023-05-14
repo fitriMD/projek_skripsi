@@ -52,9 +52,9 @@
                                         <td>
                                             <a href="{{ url('periode/hapus/'. $p->id_periode) }}" class="btn btn-danger"
                                                 onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
-                                                    class="fa fa-trash"></i> Hapus</a>
+                                                    class="fa fa-trash"></i></a>
                                             <a href="{{ url('periode/update/'. $p->id_periode) }}"
-                                                class="btn btn-warning"><i class="fa fa-edit"></i> Update</a>
+                                                class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach

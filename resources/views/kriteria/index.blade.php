@@ -35,9 +35,11 @@
                                         <th>
                                             Tipe
                                         </th>
+                                        @if (Auth::user()->roles=='admin')
                                         <th>
                                             Action
                                         </th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +50,7 @@
                                         <td>{{ $k->nm_kriteria }}</td>
                                         <td>{{ $k->variabel }}</td>
                                         <td>{{ $k->tipe }}</td>
+                                        @if (Auth::user()->roles=='admin')
                                         <td>
 
                                             {{-- <a href="{{ url('kriteria/hapus/'. $k->id_kriteria) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
@@ -55,6 +58,7 @@
                                             <a href="{{ url('kriteria/update/'. $k->id_kriteria) }}" class="btn btn-warning"><i
                                                     class="fa fa-edit"></i> Update</a>    
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                     

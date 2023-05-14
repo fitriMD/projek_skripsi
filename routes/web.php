@@ -38,13 +38,19 @@ Route::get('/template', function () {
 
 // metode
 Route::get('/ahp', [AhpController::class, 'index']);
-Route::post('/ahp/proses', [AhpController::class, 'main']);
+Route::get('/ahp/proses', [AhpController::class, 'main']);
 Route::get('/ahp/reset', [AhpController::class, 'reset']);
 
 Route::get('/topsis', [TopsisController::class, 'index']);
 Route::get('/topsis/detail/{id_topsis}', [TopsisController::class, 'detail']);
 Route::post('/topsis/proses', [TopsisController::class, 'main']);
 Route::get('/topsis/reset', [TopsisController::class, 'reset']);
+Route::get('topsis/hapus/{id}', [TopsisController::class, 'destroy']);
+Route::get('/topsis/cetak_pdf/{id_topsis}',[TopsisController::class, 'cetak_pdf']);
+Route::get('/hasilPerhitungan', [TopsisController::class, 'hasil']);
+Route::get('/topsis/perangkingan/{id_topsis}', [TopsisController::class, 'perangkingan']);
+
+
 
 /** User */
 Route::resource('daftarUser', UserController::class);

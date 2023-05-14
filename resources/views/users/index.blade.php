@@ -30,9 +30,6 @@
                                             Nama
                                         </th>
                                         <th>
-                                            NIP
-                                        </th>
-                                        <th>
                                             Username
                                         </th>
                                         <th>
@@ -49,15 +46,14 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $user->nama }}</td>
-                                        <td>{{ $user->nip }}</td>
                                         <td>{{ $user->username }}</td>
                                         <td>{{ $user->roles }}</td>
                                         <td>
 
                                             <a href="{{ url('users/hapus/'. $user->id_user) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
-                                                class="fa fa-trash"></i> Hapus</a>
+                                                class="fa fa-trash"></i></a>
                                             <a href="{{ url('users/update/'. $user->id_user) }}" class="btn btn-warning"><i
-                                                    class="fa fa-edit"></i> Update</a>    
+                                                    class="fa fa-edit"></i></a>    
                                             {{-- <form action="{{ route('users.destroy/' . $user->id) }}" method="POST">
                                                 <form action="{{ url('fitri',$user->id) }}" method="POST">
                                                 @csrf

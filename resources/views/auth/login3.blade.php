@@ -45,7 +45,6 @@
                      <div class="center">
                         <img width="250" src="{{ asset('style2/images/MI.png')}}" alt="#" />
                      </div>
-                     {{-- <center><div class="text-white"><small>Sistem Pendukung Keputusan Pemilihan Siswa Teladan</small></div></center> --}}
                   </div>
                   <div class="login_form">
                      <form method="POST" action="{{ route('login') }}">

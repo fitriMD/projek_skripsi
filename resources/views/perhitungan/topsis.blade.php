@@ -20,10 +20,10 @@
                 <div class="graph_head">
                     <div class="col-md-12">
                         <div>
-                            <a class="btn btn-warning" href="{{ url('topsis/reset') }}"
-                                onclick="return confirm('Apakah anda ingin mereset ulang perhitungan TOPSIS ?')"><i
+                            <a class="btn btn-danger" href="{{ url('topsis/reset') }}"
+                                onclick="return confirm('Apakah Anda ingin menghapus semua data perhitungan TOPSIS ?')"><i
                                     class="fa fa-trash"></i> Hapus Semua Data</a>
-                            <a href="javascript:;" data-toggle="modal" data-target="#tambah" class="btn btn-primary">+ Tambah Perhitungan</a>
+                            <a href="javascript:;" data-toggle="modal" data-target="#tambah" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Perhitungan</a>
                             <!-- Modal -->
                             <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -50,6 +50,7 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
                         <div class="card card-body">
 
 
@@ -57,10 +58,8 @@
 
                             <div class="text-center">
                                 @php echo svgku() @endphp
-                                <h2 style="margin: 0px">Perhitungan Kosong</h2>
-                                <h4>Technique for Order of Preference by Similarity to Ideal Solution (TOPSIS)</h4>
-
-                                
+                                <h4 style="margin: 0px">Perhitungan Kosong</h4>
+                                <h4>Technique for Order of Preference by Similarity to Ideal Solution (TOPSIS)</h4>    
                             </div>
 
 
@@ -80,10 +79,11 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $isi->nama_periode }}</td>
-                                        <td>{{ $isi->created_at}}</td>
+                                        <td>{{ date('d F Y H.i', strtotime($isi->created_at))}}</td>
                                         <td>
-                                            <a href="{{ url('topsis/detail/'. $isi->id_topsis) }}" class="btn btn-sm btn-success">Info</a>
-                                            <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                                            <a href="{{ url('topsis/detail/'. $isi->id_topsis) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ url('topsis/hapus/'. $isi->id_topsis) }}" class="btn btn-sm btn-warning" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ url('/topsis/cetak_pdf/'. $isi->id_topsis) }}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach

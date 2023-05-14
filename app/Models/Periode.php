@@ -15,8 +15,8 @@ class Periode extends Model
 
     protected $fillable = [
         'nama_periode',
-        'hasil_perhitungan',
         'status',
+        'created_at'
 
     ];
 }

@@ -18,306 +18,309 @@
         <div class="dark_bg full margin_bottom_30">
             <div class="dark_bg full margin_bottom_30">
                 <div class="graph_head">
-                    <div class="row">
-                        <div class="col-md-12">
-                    
-                            
-                            
-                    
-                            <h4 style="margin: 0px">Hasil perhitungan dari metode TOPSIS</h4>
-                    
-                            @php
-                    
-                            $kolom = $topsis;
-                            $json_matrix_penilaian = json_decode( $kolom->matrix_penilaian );
-                            $json_normalisasi = json_decode( $kolom->normalisasi );
-                            $json_normalisasi_terbobot = json_decode( $kolom->normalisasi_terbobot );
-                            $json_solusi_ideal_positif_negatif
-                            =json_decode($kolom->solusi_ideal_positif_negatif);
-                            $json_relatif = json_decode( $kolom->jarak_relatif );
-                    
-                            @endphp
-                    
-                            {{-- <small>Terakhir diperbarui pada <b>{{ date('d F Y H.i', strtotime(
-                                    $kolom->created_at )) }}</b></small> --}}
-                    
-                            <hr>
-                            <h3>A. Matrix Penilaian</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Siswa</th>
-                                        <th>C1</th>
-                                        <th>C2</th>
-                                        <th>C3</th>
-                                        <th>C4</th>
-                                        <th>C5</th>
-                                        <th>C6</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_matrix_penilaian AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $no + 1}}</td>
-                                        <td>{{ $isi->nama}}</td>
-                                        <td>{{ $isi->m_penilaianC1}}</td>
-                                        <td>{{ $isi->m_penilaianC2}}</td>
-                                        <td>{{ $isi->m_penilaianC3}}</td>
-                                        <td>{{ $isi->m_penilaianC4}}</td>
-                                        <td>{{ $isi->m_penilaianC5}}</td>
-                                        <td>{{ $isi->m_penilaianC6}}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                    <div class="col-md-12">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 style="margin: 0px">Hasil perhitungan dari metode TOPSIS</h4>
+
+                                    @php
+
+                                    $kolom = $topsis;
+                                    $json_matrix_penilaian = json_decode( $kolom->matrix_penilaian );
+                                    $json_normalisasi = json_decode( $kolom->normalisasi );
+                                    $json_normalisasi_terbobot = json_decode( $kolom->normalisasi_terbobot );
+                                    $json_solusi_ideal_positif_negatif
+                                    =json_decode($kolom->solusi_ideal_positif_negatif);
+                                    $json_relatif = json_decode( $kolom->jarak_relatif );
+
+                                    @endphp
+
+                                    {{-- <small>Terakhir diperbarui pada <b>{{ date('d F Y H.i', strtotime(
+                                            $kolom->created_at )) }}</b></small> --}}
+
+                                    <hr>
+                                    <h3>A. Matrix Penilaian</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Siswa</th>
+                                                <th>C1</th>
+                                                <th>C2</th>
+                                                <th>C3</th>
+                                                <th>C4</th>
+                                                <th>C5</th>
+                                                <th>C6</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_matrix_penilaian AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $no + 1}}</td>
+                                                <td>{{ $isi->nama}}</td>
+                                                <td>{{ $isi->m_penilaianC1}}</td>
+                                                <td>{{ $isi->m_penilaianC2}}</td>
+                                                <td>{{ $isi->m_penilaianC3}}</td>
+                                                <td>{{ $isi->m_penilaianC4}}</td>
+                                                <td>{{ $isi->m_penilaianC5}}</td>
+                                                <td>{{ $isi->m_penilaianC6}}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <br>
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>B. Normalisasi</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Siswa</th>
+                                                <th>C1</th>
+                                                <th>C2</th>
+                                                <th>C3</th>
+                                                <th>C4</th>
+                                                <th>C5</th>
+                                                <th>C6</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_normalisasi AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $no + 1}}</td>
+                                                <td>{{ $isi->nama}}</td>
+                                                <td>{{ number_format($isi->m_normalisasiC1, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasiC2, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasiC3, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasiC4, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasiC5, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasiC6, 2)}}</td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>C. Normalisasi Terbobot</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Siswa</th>
+                                                <th>C1</th>
+                                                <th>C2</th>
+                                                <th>C3</th>
+                                                <th>C4</th>
+                                                <th>C5</th>
+                                                <th>C6</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_normalisasi AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $no + 1}}</td>
+                                                <td>{{ $isi->nama}}</td>
+                                                <td>{{ number_format($isi->m_normalisasi_terbobotC1, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasi_terbobotC2, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasi_terbobotC3, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasi_terbobotC4, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasi_terbobotC5, 2)}}</td>
+                                                <td>{{ number_format($isi->m_normalisasi_terbobotC6, 2)}}</td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>D. Solusi Ideal Positif</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kriteria</th>
+                                                <th>Solusi Ideal Positif</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_solusi_ideal_positif_negatif AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $no + 1}}</td>
+                                                <td>{{ $isi->variabel}}</td>
+                                                <td>{{ number_format($isi->solusiPositif, 2)}}</td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>E. Solusi Ideal Negatif</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kriteria</th>
+                                                <th>Solusi Ideal Negatif</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_solusi_ideal_positif_negatif AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $no + 1}}</td>
+                                                <td>{{ $isi->variabel}}</td>
+                                                <td>{{ number_format($isi->solusiNegatif, 2)}}</td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>F. Jarak Alternatif Dengan Solusi Ideal Positif</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Siswa</th>
+                                                <th>Jarak Alternatif</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_relatif AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $no + 1}}</td>
+                                                <td>{{ $isi->nama}}</td>
+                                                <td>{{ number_format($isi->jarakAlternatifPositif, 2)}}</td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>G. Jarak Alternatif Dengan Solusi Ideal Negatif</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Siswa</th>
+                                                <th>Jarak Alternatif</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_relatif AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $no + 1}}</td>
+                                                <td>{{ $isi->nama}}</td>
+                                                <td>{{ number_format($isi->jarakAlternatifNegatif, 2)}}</td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>H. Jarak Relatif Alternatif terhadap Solusi Ideal Positif</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Siswa</th>
+                                                <th>Jarak Relatif </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_relatif AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $no + 1}}</td>
+                                                <td>{{ $isi->nama}}</td>
+                                                <td>{{ number_format($isi->hasilJarak, 2)}}</td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>I. Keputusan (Perangkingan)</h3>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Nama Siswa</th>
+                                                <th>Hasil Perhitungan</th>
+                                                <th>Rangking</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ( $json_relatif AS $no => $isi )
+                                            <tr>
+                                                <td>{{ $isi->nama}}</td>
+                                                <td>{{ number_format($isi->hasilJarak, 2)}}</td>
+                                                <td>{{ $no + 1}}</td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br>
-                    <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>B. Normalisasi</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Siswa</th>
-                                        <th>C1</th>
-                                        <th>C2</th>
-                                        <th>C3</th>
-                                        <th>C4</th>
-                                        <th>C5</th>
-                                        <th>C6</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_normalisasi AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $no + 1}}</td>
-                                        <td>{{ $isi->nama}}</td>
-                                        <td>{{ number_format($isi->m_normalisasiC1, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasiC2, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasiC3, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasiC4, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasiC5, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasiC6, 2)}}</td>
-                    
-                                    </tr>
-                                    @endforeach
-                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    </div>
-                    <br>
-                    <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>C. Normalisasi Terbobot</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Siswa</th>
-                                        <th>C1</th>
-                                        <th>C2</th>
-                                        <th>C3</th>
-                                        <th>C4</th>
-                                        <th>C5</th>
-                                        <th>C6</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_normalisasi AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $no + 1}}</td>
-                                        <td>{{ $isi->nama}}</td>
-                                        <td>{{ number_format($isi->m_normalisasi_terbobotC1, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasi_terbobotC2, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasi_terbobotC3, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasi_terbobotC4, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasi_terbobotC5, 2)}}</td>
-                                        <td>{{ number_format($isi->m_normalisasi_terbobotC6, 2)}}</td>
-                    
-                                    </tr>
-                                    @endforeach
-                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    </div>
-                    <br>
-                    <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>D. Solusi Ideal Positif</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Kriteria</th>
-                                        <th>Solusi Ideal Positif</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_solusi_ideal_positif_negatif AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $no + 1}}</td>
-                                        <td>{{ $isi->variabel}}</td>
-                                        <td>{{ number_format($isi->solusiPositif, 2)}}</td>
-                    
-                                    </tr>
-                                    @endforeach
-                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    </div>
-                    <br>
-                    <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>E. Solusi Ideal Negatif</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Kriteria</th>
-                                        <th>Solusi Ideal Negatif</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_solusi_ideal_positif_negatif AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $no + 1}}</td>
-                                        <td>{{ $isi->variabel}}</td>
-                                        <td>{{ number_format($isi->solusiNegatif, 2)}}</td>
-                    
-                                    </tr>
-                                    @endforeach
-                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    </div>
-                    <br>
-                    <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>F. Jarak Alternatif Dengan Solusi Ideal Positif</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Siswa</th>
-                                        <th>Jarak Alternatif</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_relatif AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $no + 1}}</td>
-                                        <td>{{ $isi->nama}}</td>
-                                        <td>{{ number_format($isi->jarakAlternatifPositif, 2)}}</td>
-                    
-                                    </tr>
-                                    @endforeach
-                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    </div>
-                    <br>
-                    <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>G. Jarak Alternatif Dengan Solusi Ideal Negatif</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Siswa</th>
-                                        <th>Jarak Alternatif</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_relatif AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $no + 1}}</td>
-                                        <td>{{ $isi->nama}}</td>
-                                        <td>{{ number_format($isi->jarakAlternatifNegatif, 2)}}</td>
-                    
-                                    </tr>
-                                    @endforeach
-                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    </div>
-                    <br>
-                    <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>H. Jarak Relatif Alternatif terhadap Solusi Ideal Positif</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Siswa</th>
-                                        <th>Jarak Relatif </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_relatif AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $no + 1}}</td>
-                                        <td>{{ $isi->nama}}</td>
-                                        <td>{{ number_format($isi->hasilJarak, 2)}}</td>
-                    
-                                    </tr>
-                                    @endforeach
-                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    </div>
-                    <br>
-                    <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>I. Keputusan (Perangkingan)</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                    
-                                        <th>Nama Siswa</th>
-                                        <th>Hasil Perhitungan</th>
-                                        <th>Rangking</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ( $json_relatif AS $no => $isi )
-                                    <tr>
-                                        <td>{{ $isi->nama}}</td>
-                                        <td>{{ number_format($isi->hasilJarak, 2)}}</td>
-                                        <td>{{ $no + 1}}</td>
-                    
-                                    </tr>
-                                    @endforeach
-                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-warning" href="{{ url('/topsis') }}"><i class="fa fa-backward"></i> Kembali</a>
                     </div>
                 </div>
             </div>

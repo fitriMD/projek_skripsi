@@ -77,11 +77,11 @@ class SiswaController extends Controller
         $siswa->save();
 
         if ($siswa) {
-            Session::flash('success','Data kelas Berhasil Ditambahkan');
+            Session::flash('success','Data Siswa Berhasil Ditambahkan');
             return redirect('daftarSiswa');
         } else {
             Session::flash('failed','Data kelas Gagal Ditambahkan');
-            return redirect()->route('kelas.create');
+            return redirect()->route('siswa.create');
         }
     }
 

@@ -62,7 +62,6 @@ class AhpController extends Controller
 
         $dt_insert = array(
 
-            'id_periode'            => $id_periode,
             'matrix_perbandingan'   => $json_matrix_perbandingan,
             'bobot_prioritas'       => $json_matrix_bobot
         );

@@ -24,10 +24,10 @@ class AlternatifController extends Controller
     {
         //$alternatif = Alternatif::with('siswa')->get();
         $alternatif = DB::table("data_alternatif")
-                        ->select("data_alternatif.*", "data_siswa.*", "periode.*")
-                        ->join("data_siswa", "data_siswa.id_siswa", "=", "data_alternatif.id_siswa")
-                        ->join("periode", "periode.id_periode", "=", "data_alternatif.id_periode")
-                        ->get();
+            ->select("data_alternatif.*", "data_siswa.*", "periode.*")
+            ->join("data_siswa", "data_siswa.id_siswa", "=", "data_alternatif.id_siswa")
+            ->join("periode", "periode.id_periode", "=", "data_alternatif.id_periode")
+            ->get();
 
         return view('alternatif.index', compact('alternatif'));
     }
@@ -52,20 +52,24 @@ class AlternatifController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_siswa' => 'required',
-            'id_periode' => 'required',
-            'C1' => 'required',
-            'C2' => 'required',
-            'C3' => 'required',
-            'C4' => 'required',
-            'C5' => 'required',
-            'C6' => 'required|numeric',
+        $request->validate(
+            [
+                'id_siswa' => 'required',
+                'id_periode' => 'required',
+                'C1' => 'required|numeric',
+                'C2' => 'required|string|max:1',
+                'C3' => 'required|integer',
+                'C4' => 'required|string|max:1',
+                'C5' => 'required|string|max:1',
+                'C6' => 'required|numeric',
 
-        ],[
+            ],
+            [
+                'C1.numeric'    => "Harap masukkan bilangan desimal",
+                'C6.numeric'    => "Harap masukkan bilangan desimal"
 
-            'C6.numeric'    => "Harap masukkan bilangan desimal"
-        ]);
+            ]
+        );
 
         $alternatif = new Alternatif();
         $alternatif->id_siswa = $request->get('id_siswa');
@@ -77,18 +81,18 @@ class AlternatifController extends Controller
         $alternatif->C5 = $request->get('C5');
         $alternatif->C6 = $request->get('C6');
         $alternatif->save();
-        
+
         // $siswa = new Siswa();
-        
+
         // $alternatif->siswa()->save($siswa);
         $alternatif->save();
 
         if ($alternatif) {
-            Session::flash('success','Data kelas Berhasil Ditambahkan');
+            Session::flash('success', 'Data kelas Berhasil Ditambahkan');
             return redirect('daftarAlternatif');
         } else {
-            Session::flash('failed','Data kelas Gagal Ditambahkan');
-            return redirect()->route('kelas.create');
+            Session::flash('failed', 'Data kelas Gagal Ditambahkan');
+            return redirect()->route('alternatif.create');
         }
     }
 
@@ -146,7 +150,7 @@ class AlternatifController extends Controller
      */
     public function destroy($id)
     {
-        
+
         Alternatif::find($id)->delete();
         return redirect('daftarAlternatif');
     }

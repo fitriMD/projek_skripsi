@@ -19,4 +19,9 @@ class Periode extends Model
         'created_at'
 
     ];
+    
+    public function siswa(){
+        return $this->hasMany(Siswa::class);
+
+    }
 }

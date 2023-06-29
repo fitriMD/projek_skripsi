@@ -20,7 +20,7 @@ class Kelas extends Model
     ];
 
     public function waliKelas(){
-        return $this->hasOne(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user_walikelas');
 
     }
 

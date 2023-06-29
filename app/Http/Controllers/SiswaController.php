@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\Periode;
 use App\Models\Siswa;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -24,14 +26,25 @@ class SiswaController extends Controller
     }
     public function index()
     {
+        if (Auth::user()->roles=='admin' || Auth::user()->roles=='kepala_sekolah'){
+            $siswa = DB::table('data_siswa')
+            ->select("data_siswa.*","data_kelas.*","periode.*")
+            ->join('data_kelas','data_kelas.id_kelas','=','data_siswa.id_kelas_siswa')
+            ->join('periode','periode.id_periode','=','data_siswa.id_periode')
+            ->orderBy('nama','ASC')
+            ->get();
+        }
+        else {
+            $walikelas = User::where('id_user', Auth::user()->id_user)->first();
+            $siswa = Siswa::where('id_kelas_siswa',$walikelas->kelas->id_kelas)
+            ->orderBy('nama','ASC')
+            ->get();
+
+
+        }
         
-        // $siswa = Siswa::with('kelas')->get();
-        $siswa = DB::table('data_siswa')
-                ->select("data_siswa.*","data_kelas.*","periode.*")
-                ->join('data_kelas','data_kelas.id_kelas','=','data_siswa.id_kelas_siswa')
-                ->join('periode','periode.id_periode','=','data_siswa.id_periode')
-                ->get();
         return view('siswa.index', compact('siswa'));
+    
     }
 
     /**
@@ -56,11 +69,10 @@ class SiswaController extends Controller
     {
         $request->validate([
             'id_periode' => 'required',
-            'nis' => 'required',
-            'nama' => 'required',
+            'nis' => 'required|string|max:10|unique:data_siswa',
+            'nama' => 'required|string|max:75|',
             'gender' => 'required',
             'id_kelas_siswa' => 'required',
-
         ]);
 
         $siswa = new Siswa();
@@ -77,11 +89,9 @@ class SiswaController extends Controller
         $siswa->save();
 
         if ($siswa) {
-            Session::flash('success','Data Siswa Berhasil Ditambahkan');
-            return redirect('daftarSiswa');
+            return redirect('daftarSiswa')->with('success', 'Data Siswa Berhasil Ditambahkan');
         } else {
-            Session::flash('failed','Data kelas Gagal Ditambahkan');
-            return redirect()->route('siswa.create');
+            return redirect()->route('siswa.create')->with('toast_error', 'Data Siswa Gagal Ditambahkan');
         }
     }
 
@@ -120,6 +130,14 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'id_periode' => 'required',
+            'nis' => 'required|string|max:10|unique:data_siswa',
+            'nama' => 'required|string|max:75|',
+            'gender' => 'required',
+            'id_kelas_siswa' => 'required',
+        ]);
+        
         $siswa = Siswa::find($id);
         $siswa->id_periode = $request->id_periode;
         $siswa->nis = $request->nis;
@@ -129,7 +147,7 @@ class SiswaController extends Controller
 
         $siswa->save();
 
-        return redirect('daftarSiswa');
+        return redirect('daftarSiswa')->with('success', 'Data Siswa Berhasil Diupadate');
     }
 
     /**
@@ -141,7 +159,7 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         Siswa::find($id)->delete();
-        return redirect('daftarSiswa');
+        return redirect('daftarSiswa')->with('success', 'Data Siswa Berhasil Dihapus');
     }
 
     public function cetak_pdf(){

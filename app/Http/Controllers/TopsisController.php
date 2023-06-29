@@ -584,11 +584,12 @@ class TopsisController extends Controller
         return redirect('topsis');
     }
 
-    public function cetak_pdf(){
+    public function cetak_pdf(Request $request){
+        $periode = Periode::where('id_periode', $request->id_periode)->first();
         $topsis = DB::table("topsis")
                 ->select("topsis.*", "periode.*")
                 ->join("periode", "periode.id_periode", "=", "topsis.id_periode");
-        $pdf = PDF::loadview('perhitungan.cetak_pdf',['topsis'=>$topsis]);
+        $pdf = PDF::loadview('perhitungan.cetak_pdf',['topsis'=>$topsis,'periode'=>$periode]);
         return $pdf->stream();
     }
 }

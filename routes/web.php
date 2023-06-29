@@ -46,7 +46,7 @@ Route::get('/topsis/detail/{id_topsis}', [TopsisController::class, 'detail']);
 Route::post('/topsis/proses', [TopsisController::class, 'main']);
 Route::get('/topsis/reset', [TopsisController::class, 'reset']);
 Route::get('topsis/hapus/{id}', [TopsisController::class, 'destroy']);
-Route::get('/topsis/cetak_pdf/{id_topsis}',[TopsisController::class, 'cetak_pdf']);
+Route::get('/topsis/cetak_pdf/{id_topsis}',[TopsisController::class, 'cetak_pdf'])->name('cetak_pdf');
 Route::get('/hasilPerhitungan', [TopsisController::class, 'hasil']);
 Route::get('/topsis/perangkingan/{id_topsis}', [TopsisController::class, 'perangkingan']);
 

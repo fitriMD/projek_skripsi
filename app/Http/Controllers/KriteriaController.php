@@ -77,6 +77,12 @@ class KriteriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nm_kriteria' => 'required|string|max:25',
+            'variabel' => 'required|string|max:2|',
+            'tipe' => 'required',
+        ]);
+
         $kriteria = Kriteria::find($id);
         $kriteria->nm_kriteria = $request->nm_kriteria;
         $kriteria->variabel = $request->variabel;

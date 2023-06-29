@@ -20,7 +20,7 @@
                 <div class="graph_head">
                     <div class="col-md-12">
                         <div class="card card-body">
-                            <table class="table table-stripe">
+                            <table id="example" class="table table-stripe">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -38,7 +38,7 @@
                                         <td>
                                             <a href="{{ url('topsis/perangkingan/'. $isi->id_topsis) }}"
                                                 class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
-                                            <a href="{{ url('/topsis/cetak_pdf/'. $isi->id_topsis) }}"
+                                            <a href="{{ route('cetak_pdf', ['id_topsis'=>$isi->id_topsis,'id_periode'=>$isi->id_periode]) }}"
                                                 class="btn btn-sm btn-primary"><i class="fa fa-download"></i></a>
                                         </td>
                                     </tr>
@@ -53,3 +53,18 @@
     </div>
 </div>
 @endsection
+@push('js')
+<script>
+    $(function () {
+      $('#example').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": false,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+</script>
+@endpush

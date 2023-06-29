@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Alternatif;
 use App\Models\Periode;
 use App\Models\Siswa;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AlternatifController extends Controller
@@ -22,13 +24,22 @@ class AlternatifController extends Controller
     }
     public function index()
     {
-        //$alternatif = Alternatif::with('siswa')->get();
-        $alternatif = DB::table("data_alternatif")
+        if (Auth::user()->roles=='admin' || Auth::user()->roles=='kepala_sekolah'){
+            $alternatif = DB::table("data_alternatif")
             ->select("data_alternatif.*", "data_siswa.*", "periode.*")
             ->join("data_siswa", "data_siswa.id_siswa", "=", "data_alternatif.id_siswa")
             ->join("periode", "periode.id_periode", "=", "data_alternatif.id_periode")
             ->get();
-
+        }
+        else {
+            $walikelas = User::where('id_user', Auth::user()->id_user)->first();
+            $siswa = Siswa::where('id_kelas_siswa',$walikelas->kelas->id_kelas)
+            ->pluck('id_siswa')
+            ->toArray();
+            $alternatif = Alternatif::whereIn('id_siswa',$siswa)
+            ->get();
+        }
+        
         return view('alternatif.index', compact('alternatif'));
     }
 
@@ -39,7 +50,15 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        $siswa = Siswa::all();
+        if (Auth::user()->roles=='admin' || Auth::user()->roles=='kepala_sekolah'){
+            $siswa = Siswa::all();
+        }
+        else {
+            $walikelas = User::where('id_user', Auth::user()->id_user)->first();
+            $siswa = Siswa::where('id_kelas_siswa',$walikelas->kelas->id_kelas)
+            ->orderBy('nama','ASC')
+            ->get();
+        }
         $periode = Periode::all();
         return view('alternatif.create', compact('siswa', 'periode'));
     }
@@ -88,11 +107,9 @@ class AlternatifController extends Controller
         $alternatif->save();
 
         if ($alternatif) {
-            Session::flash('success', 'Data kelas Berhasil Ditambahkan');
-            return redirect('daftarAlternatif');
+            return redirect('daftarAlternatif')->with('success', 'Data Alternatif Berhasil Ditambahkan');
         } else {
-            Session::flash('failed', 'Data kelas Gagal Ditambahkan');
-            return redirect()->route('alternatif.create');
+            return redirect()->route('alternatif.create')->with('toast_error', 'Data Alternatif Gagal Ditambahkan');
         }
     }
 
@@ -115,9 +132,21 @@ class AlternatifController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->roles=='admin' || Auth::user()->roles=='kepala_sekolah'){
+            $siswa = Siswa::all();
+        }
+        else {
+            $walikelas = User::where('id_user', Auth::user()->id_user)->first();
+            $siswa = Siswa::where('id_kelas_siswa',$walikelas->kelas->id_kelas)
+            ->orderBy('nama','ASC')
+            ->get();
+        }
+        
         $alternatif = Alternatif::find($id);
-        $siswa = Siswa::all();
-        return view('alternatif.update', ['alternatif' => $alternatif, 'siswa' => $siswa]);
+        // $siswa = Siswa::all();
+        // return view('alternatif.update', ['alternatif' => $alternatif, 'siswa' => $siswa]);
+        $periode = Periode::all();
+        return view('alternatif.update', compact('alternatif','siswa', 'periode'));
     }
 
     /**
@@ -139,7 +168,7 @@ class AlternatifController extends Controller
         $alternatif->C6 = $request->C6;
         $alternatif->save();
 
-        return redirect('daftarAlternatif');
+        return redirect('daftarAlternatif')->with('success', 'Data Alternatif Berhasil Diupadate');
     }
 
     /**
@@ -152,6 +181,6 @@ class AlternatifController extends Controller
     {
 
         Alternatif::find($id)->delete();
-        return redirect('daftarAlternatif');
+        return redirect('daftarAlternatif')->with('success', 'Data Alternatif Berhasil Dihapus');
     }
 }

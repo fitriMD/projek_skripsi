@@ -67,11 +67,9 @@ class KelasController extends Controller
         $kelas->save();
 
         if ($kelas) {
-            Session::flash('success','Data kelas Berhasil Ditambahkan');
-            return redirect('daftarKelas');
+            return redirect('daftarKelas')->with('success', 'Data kelas Berhasil Ditambahkan');
         } else {
-            Session::flash('failed','Data kelas Gagal Ditambahkan');
-            return redirect()->route('kelas.create');
+            return redirect()->route('kelas.create')->with('toast_error', 'Data kelas Gagal Ditambahkan');
         }
     }
 
@@ -111,12 +109,23 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate(
+            [
+                'nama_kelas' => 'required|string|max:7',
+                'id_user_walikelas' => 'required',
+
+            ],
+            [
+                'C1.string'    => "Nama kelas tidak boleh lebih dari 7 huruf",
+
+            ]
+        );
         $kelas = Kelas::find($id);
         $kelas->nama_kelas = $request->nama_kelas;
         $kelas->id_user_walikelas = $request->id_user_walikelas;
         $kelas->save();
 
-        return redirect('daftarKelas');
+        return redirect('daftarKelas')->with('success', 'Data Kelas Berhasil Diupadate');
     }
 
     /**
@@ -128,6 +137,6 @@ class KelasController extends Controller
     public function destroy($id)
     {
         Kelas::find($id)->delete();
-        return redirect('daftarKelas');
+        return redirect('daftarKelas')->with('success', 'Data Kelas Berhasil Dihapus');
     }
 }

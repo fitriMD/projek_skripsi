@@ -23,11 +23,15 @@ class Siswa extends Model
     ];
 
     public function kelas(){
-        return $this->hasOne(Kelas::class, 'id_kelas');
+        return $this->belongsTo(Kelas::class, 'id_kelas_siswa');
 
     }
     public function alternatif(){
         return $this->belongsTo(Alternatif::class);
+
+    }
+    public function periode(){
+        return $this->belongsTo(Periode::class,'id_periode');
 
     }
 

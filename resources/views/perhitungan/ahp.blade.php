@@ -61,11 +61,11 @@
                             @else
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-md-2 float-right">
+                                    {{-- <div class="col-md-2 float-right">
                                         <a class="btn btn-warning" href="{{ url('ahp/reset') }}"
                                             onclick="return confirm('Apakah anda ingin mereset ulang perhitungan AHP ?')"><i
                                                 class="fa fa-refresh"></i> Hitung Ulang</a>
-                                    </div>
+                                    </div> --}}
                                     <h4 style="margin: 0px">Hasil perhitungan metode AHP</h4>
                                     @php
 

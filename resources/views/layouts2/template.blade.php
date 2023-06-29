@@ -23,6 +23,9 @@
          </div>
       </div>
    </div>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+   @include('sweetalert::alert')
+   @stack('js')
 </body>
 
 </html>

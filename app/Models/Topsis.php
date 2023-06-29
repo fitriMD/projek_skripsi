@@ -21,4 +21,9 @@ class Topsis extends Model
         'solusi_ideal_positif_negatif',
         'jarak_relatif',
     ];
+
+    public function periode(){
+        return $this->belongsTo(Periode::class, 'id_periode');
+
+    }
 }

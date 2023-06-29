@@ -18,9 +18,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title"><i class="fa fa-file"></i> Alternatif</h4>
+                        @if ((Auth::user()->roles=='admin') || (Auth::user()->roles == 'wali_kelas')) 
                         <a class="btn btn-success my-2" href="/createAlternatif" style="width: 125px; margin-left:0px;"><i class="fa fa-plus"></i> Tambah</a>
+                        @endif
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table id="example" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>
@@ -50,9 +52,11 @@
                                         <th>
                                             C6
                                         </th>
+                                        @if ((Auth::user()->roles=='admin') || (Auth::user()->roles == 'wali_kelas')) 
                                         <th>
                                             Action
                                         </th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,14 +64,15 @@
                                     @foreach ($alternatif as $alt)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $alt->nama }}</td>
-                                        <td>{{ $alt->nama_periode }}</td>
+                                        <td>{{ Auth::user()->roles=='wali_kelas'? $alt->siswa->nama : $alt->nama }}</td>
+                                        <td>{{ Auth::user()->roles=='wali_kelas'? $alt->siswa->periode->nama_periode : $alt->nama_periode }}</td>
                                         <td>{{ $alt->C1 }}</td>
                                         <td>{{ $alt->C2 }}</td>
                                         <td>{{ $alt->C3 }}</td>
                                         <td>{{ $alt->C4 }}</td>
                                         <td>{{ $alt->C5 }}</td>
                                         <td>{{ $alt->C6 }}</td>
+                                        @if ((Auth::user()->roles=='admin') || (Auth::user()->roles == 'wali_kelas')) 
                                         <td>
 
                                             <a href="{{ url('alternatif/hapus/'. $alt->id_alternatif) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini ?')"><i
@@ -75,6 +80,7 @@
                                             <a href="{{ url('alternatif/update/'. $alt->id_alternatif) }}" class="btn btn-warning"><i
                                                     class="fa fa-edit"></i></a>    
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                     
@@ -88,3 +94,18 @@
     </div>
 </div>
 @endsection
+@push('js')
+<script>
+    $(function () {
+      $('#example').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": false,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+</script>
+@endpush

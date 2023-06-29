@@ -20,7 +20,7 @@
                         <h4 class="card-title"><i class="fa fa-tasks"></i> Data kriteria</h4>
                         {{-- <a class="btn btn-success my-2" href="/createKriteria" style="width: 150px; margin-left:10px;"> Tambah Kriteria</a> --}}
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table id="example" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>
@@ -72,3 +72,18 @@
     </div>
 </div>
 @endsection
+@push('js')
+<script>
+    $(function () {
+      $('#example').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": false,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+</script>
+@endpush

@@ -20,7 +20,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $user = User::orderBy('created_at','ASC')
+        $user = User::orderBy('nama','ASC')
         ->get();
         return view('users.index', compact('user'));
     }
@@ -44,21 +44,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required',
+            'username' => 'required',
+            'roles' => 'required',
+            'password' => 'required',
+
+        ]);
 
         $user = new User;
         $user->nama = $request->input('nama');
-        // $user->email = $request->input('email');
-        // $user->nip = $request->input('nip');
         $user->username = $request->input('username');
         $user->roles = $request->input('roles');
         $user->password = Hash::make($request->input('password'));
         $user->save();
         if ($user) {
-            Session::flash('success','Data user Berhasil Ditambahkan');
-            return redirect('daftarUser');
+            return redirect('daftarUser')->with('success', 'Data User Berhasil Ditambahkan');
         } else {
-            Session::flash('failed','Data user Gagal Ditambahkan');
-            return redirect()->route('users.create');
+            return redirect()->route('users.create')->with('toast_error', 'Data user Gagal Ditambahkan');
         }
     }
 
@@ -103,7 +106,7 @@ class UserController extends Controller
         $user->roles = $request->roles;
         $user->save();
 
-        return redirect('daftarUser');
+        return redirect('daftarUser')->with('success', 'Data User Berhasil Diupdate');
     }
 
     /**
@@ -115,6 +118,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect('daftarUser');
+        return redirect('daftarUser')->with('success', 'Data User Berhasil Dihapus');
     }
 }

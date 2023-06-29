@@ -22,7 +22,7 @@
                             Tambah</a>
                             @endif
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table id="example" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>
@@ -70,3 +70,18 @@
     </div>
 </div>
 @endsection
+@push('js')
+<script>
+    $(function () {
+      $('#example').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": false,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+</script>
+@endpush

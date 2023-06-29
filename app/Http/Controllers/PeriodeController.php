@@ -65,11 +65,9 @@ class PeriodeController extends Controller
 
         $periode->save();
         if ($periode) {
-            Session::flash('success','Data user Berhasil Ditambahkan');
-            return redirect('daftarPeriode');
+            return redirect('daftarPeriode')->with('success', 'Data Periode Berhasil Ditambahkan');
         } else {
-            Session::flash('failed','Data user Gagal Ditambahkan');
-            return redirect()->route('periode.create');
+            return redirect()->route('periode.create')->with('toast_error', 'Data Periode Gagal Ditambahkan');
         }
     }
 
